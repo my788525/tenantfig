@@ -47,11 +47,13 @@ export default function Footer() {
           <h3 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">Governance</h3>
           <ul className="space-y-2">
             <li><Link href="/methodology/" className="hover:text-white">Audit Methodology</Link></li>
+            <li><Link href="/editorial-policy/" className="hover:text-white">Editorial Policy</Link></li>
             <li><Link href="/changelog/" className="hover:text-white">2026 Statutory Changelog</Link></li>
             <li><Link href="/about/" className="hover:text-white">About TenantFig</Link></li>
             <li><Link href="/contact/" className="hover:text-white">Contact</Link></li>
             <li><Link href="/privacy/" className="hover:text-white">Privacy Policy</Link></li>
             <li><Link href="/terms/" className="hover:text-white">Terms of Use</Link></li>
+            <li><Link href="/disclaimer/" className="hover:text-white">Legal Disclaimer</Link></li>
           </ul>
         </div>
       </div>

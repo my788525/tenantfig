@@ -10,7 +10,10 @@ import {
 export const metadata: Metadata = {
   title: '4-Step Tenant Action & Deposit Recovery Wizard (2026)',
   description:
-    'Guided 4-step tenant statutory wizard across all 51 US jurisdictions and 25 metro rent-cap cities. Generate a free printable Statutory Action Brief and match the exact legal kit.'
+    'Guided 4-step tenant statutory wizard across all 51 US jurisdictions and 25 metro rent-cap cities. Generate a free printable Statutory Action Brief and match the exact legal kit.',
+  alternates: {
+    canonical: '/wizard/'
+  }
 };
 
 const WIZARD_FAQS = [

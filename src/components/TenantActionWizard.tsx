@@ -776,6 +776,10 @@ Failure to cure within 7 business days will result in formal escalation to Small
                       href={buyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-matrix-offer="1"
+                      data-offer-slot="inline"
+                      data-offer-id={tier.pid}
+                      data-offer-action="buy"
                       className={`block w-full text-center px-4 py-3 rounded-xl text-xs font-extrabold transition ${
                         isMatched
                           ? 'bg-[#c8a24a] hover:bg-[#e2be68] text-[#09192e]'

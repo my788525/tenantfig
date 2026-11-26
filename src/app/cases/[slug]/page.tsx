@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cs) return { title: 'Case Not Found' };
   return {
     title: cs.title,
-    description: cs.outcomeSummary
+    description: cs.outcomeSummary,
+    alternates: {
+      canonical: `/cases/${cs.slug}/`
+    }
   };
 }
 

@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/Jso
 export const metadata: Metadata = {
   title: 'Rent Increase Cap Auditor (CA AB 1482, NYC Good Cause, 25 Cities)',
   description:
-    'Audit proposed rent hikes against CA AB 1482, NYC Good Cause Eviction, LA RSO, SF, Seattle, Portland, and 25 major metro ordinances.'
+    'Audit proposed rent hikes against CA AB 1482, NYC Good Cause Eviction, LA RSO, SF, Seattle, Portland, and 25 major metro ordinances.',
+  alternates: {
+    canonical: '/calculators/rent-increase-cap/'
+  }
 };
 
 export default function RentIncreaseCapPage() {

@@ -5,7 +5,10 @@ import { TENANT_STATUTES_2026 } from '@/data/tenant_statutes_2026';
 
 export const metadata: Metadata = {
   title: 'Master 2026 Citation Ledger (All 51 Jurisdictions)',
-  description: 'Direct statutory citations and official .gov Attorney General and Small Claims portals for all 50 states + DC.'
+  description: 'Direct statutory citations and official .gov Attorney General and Small Claims portals for all 50 states + DC.',
+  alternates: {
+    canonical: '/statutes/'
+  }
 };
 
 export default function StatutesLedgerPage() {

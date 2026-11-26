@@ -29,7 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about/',
     '/contact/',
     '/privacy/',
-    '/terms/'
+    '/terms/',
+    '/disclaimer/',
+    '/editorial-policy/'
   ];
 
   const routes: MetadataRoute.Sitemap = staticRoutes.map((r) => ({

@@ -7,7 +7,10 @@ import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 export const metadata: Metadata = {
   title: 'Tenant Statutory Defense Guides & Direct-Answer Playbooks (2026)',
   description:
-    'Deep-dive guides on security deposit return deadlines, HUD carpet & paint depreciation, CA AB 1482 & NYC Good Cause rent caps, and Small Claims Court ROI.'
+    'Deep-dive guides on security deposit return deadlines, HUD carpet & paint depreciation, CA AB 1482 & NYC Good Cause rent caps, and Small Claims Court ROI.',
+  alternates: {
+    canonical: '/guides/'
+  }
 };
 
 export default function GuidesIndexPage() {
@@ -25,7 +28,7 @@ export default function GuidesIndexPage() {
         </div>
         <h1 className="text-3xl font-extrabold text-[#0f2747]">Tenant Statutory Defense Guides</h1>
         <p className="text-sm text-slate-600 max-w-3xl">
-          Direct-answer tables, statutory citations, and tactical playbooks for white-collar renters.
+          Direct-answer tables, primary statutory citations, and field-tested execution playbooks for U.S. renters disputing security deposit deductions, unlawful rent hikes, and lease-break penalties.
         </p>
       </div>
 
@@ -50,6 +53,49 @@ export default function GuidesIndexPage() {
           </Link>
         ))}
       </div>
+
+      {/* Editorial Context & How to Use These Playbooks (450+ words total on page) */}
+      <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-4 text-sm text-slate-700 leading-relaxed">
+        <div className="text-xs font-mono uppercase tracking-widest text-[#059669] font-bold">
+          HOW TO USE THESE PLAYBOOKS
+        </div>
+        <h2 className="text-xl font-extrabold text-[#0f2747]">
+          From Statutory Research to Court-Ready Execution
+        </h2>
+        <p>
+          Most residential landlord-tenant disputes are won or lost on procedural precision before anyone ever steps into a courtroom. Landlords and institutional property managers rely on standardized move-out deduction templates that frequently violate state vendor-receipt rules, ignore HUD Handbook 4350.3 useful-life depreciation, or miss mandatory 14-to-30-day postmark deadlines.
+        </p>
+        <p>
+          Each TenantFig defense guide pairs primary state code citations with concrete arithmetic and step-by-step notice protocols. Start by identifying your exact statutory deadline in our{' '}
+          <Link href="/states/" className="text-[#059669] font-bold underline">
+            51-Jurisdiction State Directory
+          </Link>{' '}
+          or municipal rent cap in our{' '}
+          <Link href="/cities/" className="text-[#059669] font-bold underline">
+            25-Metro Ordinance Index
+          </Link>
+          . Next, run your exact figures through our{' '}
+          <Link href="/calculators/security-deposit-penalty/" className="text-[#059669] font-bold underline">
+            Security Deposit Penalty Calculator
+          </Link>{' '}
+          and{' '}
+          <Link href="/calculators/wear-and-tear-deduction/" className="text-[#059669] font-bold underline">
+            Wear &amp; Tear Depreciation Auditor
+          </Link>{' '}
+          to quantify your recoverable principal and 2x–3x statutory damages.
+        </p>
+        <p>
+          Finally, avoid silent forfeitures—such as cashing a partial refund check stamped &ldquo;Payment in Full&rdquo; under UCC § 3-311 or failing to deliver a written forwarding address—by reviewing our{' '}
+          <Link href="/pitfalls/" className="text-[#059669] font-bold underline">
+            Pitfalls &amp; Traps Playbook
+          </Link>{' '}
+          before sending your USPS Certified Mail demand letter. If you prefer a guided workflow that automatically selects your state&apos;s exact statutory clock and penalty multiplier, launch the{' '}
+          <Link href="/wizard/" className="text-[#059669] font-bold underline">
+            4-Step Tenant Action Wizard
+          </Link>{' '}
+          to generate a printable 《Statutory Brief》 in under two minutes.
+        </p>
+      </section>
     </div>
   );
 }

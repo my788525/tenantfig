@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/com
 export const metadata: Metadata = {
   title: 'Lease Red-Flag & Illegal Clause Scanner (51-State 2026 Audit)',
   description:
-    'Scan residential lease clauses for illegal non-refundable deposits, wear-and-tear waivers, warrantless entry, and rent-cap violations across all 51 U.S. jurisdictions.'
+    'Scan residential lease clauses for illegal non-refundable deposits, wear-and-tear waivers, warrantless entry, and rent-cap violations across all 51 U.S. jurisdictions.',
+  alternates: {
+    canonical: '/calculators/lease-clause-scanner/'
+  }
 };
 
 const SCANNER_FAQS = [

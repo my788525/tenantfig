@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/Jso
 export const metadata: Metadata = {
   title: 'Lease Break Mitigation & Settlement Calculator (50 States, 2026)',
   description:
-    'Model landlord duty to mitigate damages, vacancy proration, and early-termination buyout ROI across all 51 US jurisdictions.'
+    'Model landlord duty to mitigate damages, vacancy proration, and early-termination buyout ROI across all 51 US jurisdictions.',
+  alternates: {
+    canonical: '/calculators/lease-break-mitigation/'
+  }
 };
 
 export default function LeaseBreakMitigationPage() {

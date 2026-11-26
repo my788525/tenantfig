@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/Jso
 export const metadata: Metadata = {
   title: 'Security Deposit Penalty Calculator (50 States + DC, 2026)',
   description:
-    'Audit landlord security deposit return deadlines, forwarding-address clock triggers, and 2x/3x statutory bad-faith damages across all 51 US jurisdictions.'
+    'Audit landlord security deposit return deadlines, forwarding-address clock triggers, and 2x/3x statutory bad-faith damages across all 51 US jurisdictions.',
+  alternates: {
+    canonical: '/calculators/security-deposit-penalty/'
+  }
 };
 
 export default function SecurityDepositPenaltyPage() {

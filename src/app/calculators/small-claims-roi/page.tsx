@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/Jso
 export const metadata: Metadata = {
   title: 'Small Claims Court Recovery ROI Calculator (50 States, 2026)',
   description:
-    'Compute net expected recovery in Small Claims Court: principal + 2x/3x statutory damages minus filing fees and executive time cost.'
+    'Compute net expected recovery in Small Claims Court: principal + 2x/3x statutory damages minus filing fees and executive time cost.',
+  alternates: {
+    canonical: '/calculators/small-claims-roi/'
+  }
 };
 
 export default function SmallClaimsRoiPage() {

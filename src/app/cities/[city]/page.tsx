@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CITY_RENT_CAPS_2026, getCityBySlug } from '@/data/city_rent_caps_2026';
-import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
+import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 
 export function generateStaticParams() {
@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!c) return { title: 'City Not Found' };
   return {
     title: `${c.city}, ${c.stateCode} Rent Increase Cap & Notice Laws (2026)`,
-    description: `${c.ordinanceName}: ${c.annualCapFormula}. ${c.noticeDaysRequired}-day notice requirement and exemptions.`
+    description: `${c.ordinanceName}: ${c.annualCapFormula}. ${c.noticeDaysRequired}-day notice requirement and exemptions.`,
+    alternates: {
+      canonical: `/cities/${c.slug}/`
+    }
   };
 }
 
@@ -25,14 +28,36 @@ export default async function CityDetailPage({ params }: { params: Promise<{ cit
   const c = getCityBySlug(city);
   if (!c) notFound();
 
+  const faqs = [
+    {
+      question: `What is the maximum legal rent increase in ${c.city}, ${c.stateCode} in 2026?`,
+      answer: `${c.hasLocalRentCap && c.effectiveMaxCapPct !== null ? `Covered units in ${c.city} are capped at ${c.effectiveMaxCapPct}% (${c.annualCapFormula}) under ${c.ordinanceName}.` : `${c.city} does not enforce a standalone municipal percentage cap (${c.annualCapFormula}), though state notice and anti-retaliation rules still apply.`}`
+    },
+    {
+      question: `How many days of written notice are required for a rent increase in ${c.city}?`,
+      answer: `Landlords in ${c.city} must deliver at least ${c.noticeDaysRequired} days of advance written notice before a rent increase can legally take effect.`
+    },
+    {
+      question: `Which rental properties are exempt from ${c.city} rent control?`,
+      answer: c.exemptionsSummary
+    },
+    {
+      question: `Does ${c.city} require Just Cause for eviction or relocation assistance?`,
+      answer: `${c.justCauseEviction ? `Yes, ${c.city} enforces Just Cause eviction protections under ${c.ordinanceName}.` : `${c.city} relies primarily on ${c.stateCode} state-level termination rules.`} ${c.relocationAssistanceNote}`
+    }
+  ];
+
   return (
     <div className="container-page py-10 space-y-8">
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: 'Home', url: 'https://tenantfig.com/' },
-          { name: 'Cities', url: 'https://tenantfig.com/cities/' },
-          { name: c.city, url: `https://tenantfig.com/cities/${c.slug}/` }
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Home', url: 'https://tenantfig.com/' },
+            { name: 'Cities', url: 'https://tenantfig.com/cities/' },
+            { name: c.city, url: `https://tenantfig.com/cities/${c.slug}/` }
+          ]),
+          faqJsonLd(faqs)
+        ]}
       />
       <div className="space-y-3 border-b border-slate-200 pb-6">
         <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
@@ -152,6 +177,80 @@ export default async function CityDetailPage({ params }: { params: Promise<{ cit
           </a>
         </div>
       </div>
+
+      {/* Long-Form Municipal Execution Playbook (550-800+ words) */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+            CERTIFIED OBJECTION PROTOCOL · {c.city.toUpperCase()}
+          </div>
+          <h2 className="text-xl font-extrabold text-[#0f2747]">
+            Step-by-Step Certified Mail Rent-Cap Objection Protocol
+          </h2>
+          <p>
+            When a landlord issues a renewal offer or rent increase notice in <strong>{c.city}, {c.stateCode}</strong> that exceeds <strong>{c.annualCapFormula}</strong> or fails the mandatory <strong>{c.noticeDaysRequired}-day</strong> written notice window, paying the unlawful amount without objection can be treated as implied consent. Execute this four-step protocol immediately upon receiving notice:
+          </p>
+          <ol className="list-decimal pl-5 space-y-2.5">
+            <li>
+              <strong>Verify Coverage &amp; Exemption Status:</strong> Cross-check your building&apos;s certificate of occupancy year and property type against <strong>{c.ordinanceName}</strong>. Exemptions typically hinge on construction date, owner-occupied smallplex status, or single-family corporate ownership ({c.exemptionsSummary}).
+            </li>
+            <li>
+              <strong>Audit the Notice Window ({c.noticeDaysRequired} Days):</strong> Count calendar days from the date of proper written service to the effective billing date. An increase delivered by email alone or with fewer than {c.noticeDaysRequired} days&apos; lead time is procedurally defective in most covered jurisdictions.
+            </li>
+            <li>
+              <strong>Serve a Certified Mail Notice of Statutory Objection:</strong> Mail a written objection via USPS Certified Mail with Return Receipt Requested citing <strong>{c.ordinanceName}</strong>. Explicitly state the lawful base rent, the maximum permitted increase{c.hasLocalRentCap && c.effectiveMaxCapPct !== null ? ` (${c.effectiveMaxCapPct}%)` : ''}, and your election to tender only the lawful rent.
+            </li>
+            <li>
+              <strong>Tender Lawful Rent &amp; Preserve Escrow Records:</strong> Continue paying your undisputed base rent (or lawful capped amount) on time via traceable ACH or cashier&apos;s check so the landlord cannot manufacture a non-payment default.
+            </li>
+          </ol>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#059669] font-bold">
+            RENT BOARD &amp; ENFORCEMENT · {c.stateCode}
+          </div>
+          <h2 className="text-xl font-extrabold text-[#0f2747]">
+            Local Rent Board Filing &amp; Retaliation Defense in {c.city}
+          </h2>
+          <p>
+            If your landlord refuses to retract an unlawful increase or threatens non-renewal after you assert your rights under <strong>{c.ordinanceName}</strong>, escalate through the{' '}
+            <a href={c.officialPortalUrl} target="_blank" rel="noopener noreferrer" className="text-[#059669] font-bold underline">
+              official {c.city} housing portal
+            </a>{' '}
+            or local Rent Stabilization Board. Document every renewal notice, repair request, and lease addendum in chronological order.
+          </p>
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+            <h3 className="text-sm font-extrabold text-[#0f2747]">
+              Just Cause, Relocation &amp; Move-Out Deposit Leverage
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {c.justCauseEviction
+                ? `${c.city} enforces Just Cause eviction protections, meaning a landlord cannot simply terminate your tenancy at lease end to bypass the rent cap or retaliate against a statutory complaint.`
+                : `Even where ${c.city} relies on ${c.stateCode} state-level termination rules, retaliatory rent hikes within 90–180 days of a habitability or code complaint are strictly prohibited.`}{' '}
+              {c.relocationAssistanceNote} Additionally, if you decide to vacate rather than renew, remember that your security deposit remains protected by {c.stateCode} normal-wear-and-tear rules (HUD 4350.3 depreciation schedules) and statutory return deadlines.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* City-Specific FAQs */}
+      <section className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4">
+        <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+          FREQUENTLY ASKED QUESTIONS · {c.city.toUpperCase()}
+        </div>
+        <h2 className="text-xl font-extrabold text-[#0f2747]">
+          {c.city} Rent Cap &amp; Tenant Rights FAQ (2026)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {faqs.map((f, idx) => (
+            <div key={idx} className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5">
+              <h3 className="text-sm font-bold text-[#0f2747]">{f.question}</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">{f.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

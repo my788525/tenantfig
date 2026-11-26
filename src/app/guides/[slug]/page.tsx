@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!g) return { title: 'Guide Not Found' };
   return {
     title: g.title,
-    description: g.summary
+    description: g.summary,
+    alternates: {
+      canonical: `/guides/${g.slug}/`
+    }
   };
 }
 

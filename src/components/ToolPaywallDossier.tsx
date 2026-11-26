@@ -281,6 +281,8 @@ export default function ToolPaywallDossier({
             <button
               type="button"
               onClick={() => handleCheckout(MATRIX_ALL_ACCESS_PID, allAccessUrl)}
+              data-offer-action="buy"
+              data-offer-id={MATRIX_ALL_ACCESS_PID}
               className="px-4 py-3 rounded-xl bg-[#09192e] hover:bg-slate-900 text-slate-200 border border-slate-700 text-xs font-semibold cursor-pointer"
             >
               All-Access Matrix Pass

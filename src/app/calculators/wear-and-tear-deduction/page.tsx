@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/Jso
 export const metadata: Metadata = {
   title: 'Normal Wear & Tear Deduction Auditor (HUD Carpet & Paint 2026)',
   description:
-    'Prorate apartment carpet (5–7 yr) and interior paint (2–3 yr) useful-life depreciation to dispute unlawful security deposit deductions.'
+    'Prorate apartment carpet (5–7 yr) and interior paint (2–3 yr) useful-life depreciation to dispute unlawful security deposit deductions.',
+  alternates: {
+    canonical: '/calculators/wear-and-tear-deduction/'
+  }
 };
 
 export default function WearAndTearPage() {

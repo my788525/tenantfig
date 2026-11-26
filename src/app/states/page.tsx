@@ -7,7 +7,10 @@ import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 export const metadata: Metadata = {
   title: 'All 50 States + DC Security Deposit & Tenant Statutes (2026)',
   description:
-    'Complete 51-jurisdiction directory of security deposit return deadlines, forwarding-address triggers, 2x/3x statutory penalties, and small claims limits.'
+    'Complete 51-jurisdiction directory of security deposit return deadlines, forwarding-address triggers, 2x/3x statutory penalties, and small claims limits.',
+  alternates: {
+    canonical: '/states/'
+  }
 };
 
 export default function StatesIndexPage() {

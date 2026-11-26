@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TENANT_STATUTES_2026 } from '@/data/tenant_statutes_2026';
 import { CITY_RENT_CAPS_2026 } from '@/data/city_rent_caps_2026';
@@ -6,6 +7,12 @@ import { CASE_STUDIES_2026, GUIDES_2026 } from '@/data/cases_and_guides';
 import { JsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 import HiddenTrapsCallout from '@/components/HiddenTrapsCallout';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/'
+  }
+};
 
 const CALCULATORS = [
   {

@@ -4,13 +4,13 @@
 
 This is the machine-readable companion to https://tenantfig.com/llms.txt. It lists every
 indexable page on tenantfig.com with its canonical URL.
-## Complete page index (106 pages)
+## Complete page index (108 pages)
 
 ### Home
 - [TenantFig — U.S. Tenant Statutory Defense & Deposit Recovery Platform](https://tenantfig.com)
 
 ### /about
-- [About TenantFig | TenantFig](https://tenantfig.com/about/)
+- [About TenantFig — U.S. Tenant Statutory Defense Platform | TenantFig](https://tenantfig.com/about/)
 
 ### /calculators
 - [Itemized Move-Out Deduction & Receipt Auditor (2026 State Thresholds) | TenantFig](https://tenantfig.com/calculators/deduction-invoice-auditor/)
@@ -28,7 +28,7 @@ indexable page on tenantfig.com with its canonical URL.
 - [Oakland, CA: Reversing a $2,800 Deposit Withholding on Aged Carpet & Repainting | TenantFig](https://tenantfig.com/cases/oakland-ca-2800-deposit-paint-carpet/)
 
 ### /changelog
-- [2026 Statutory Changelog | TenantFig](https://tenantfig.com/changelog/)
+- [2026 Statutory Changelog — Legislative & Ordinance Updates | TenantFig](https://tenantfig.com/changelog/)
 
 ### /cities
 - [Top 25 U.S. Metro Rent Control & Notice Ordinances (2026) | TenantFig](https://tenantfig.com/cities/)
@@ -59,7 +59,13 @@ indexable page on tenantfig.com with its canonical URL.
 - [Washington, DC, DC Rent Increase Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/washington-dc/)
 
 ### /contact
-- [Contact TenantFig | TenantFig](https://tenantfig.com/contact/)
+- [Contact TenantFig — Statutory Corrections & Editorial Inquiries | TenantFig](https://tenantfig.com/contact/)
+
+### /disclaimer
+- [Legal Disclaimer — Educational Statutory Modeling Only | TenantFig](https://tenantfig.com/disclaimer/)
+
+### /editorial-policy
+- [Editorial Policy & Primary-Source Citation Standards | TenantFig](https://tenantfig.com/editorial-policy/)
 
 ### /guides
 - [Tenant Statutory Defense Guides & Direct-Answer Playbooks (2026) | TenantFig](https://tenantfig.com/guides/)
@@ -77,7 +83,7 @@ indexable page on tenantfig.com with its canonical URL.
 - [Real-World Tenant Pitfalls, Black Holes & Survival Playbook (2026) | TenantFig](https://tenantfig.com/pitfalls/)
 
 ### /privacy
-- [Privacy Policy | TenantFig](https://tenantfig.com/privacy/)
+- [Privacy Policy — Client-Side Privacy, Cookies & AdSense Disclosures | TenantFig](https://tenantfig.com/privacy/)
 
 ### /states
 - [All 50 States + DC Security Deposit & Tenant Statutes (2026) | TenantFig](https://tenantfig.com/states/)

@@ -5,7 +5,10 @@ import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/com
 export const metadata: Metadata = {
   title: 'Itemized Move-Out Deduction & Receipt Auditor (2026 State Thresholds)',
   description:
-    'Audit move-out cleaning, repainting, carpet, and blinds deductions against state vendor-receipt thresholds (e.g. CA $125 rule), HUD useful-life caps, and metro market benchmarks.'
+    'Audit move-out cleaning, repainting, carpet, and blinds deductions against state vendor-receipt thresholds (e.g. CA $125 rule), HUD useful-life caps, and metro market benchmarks.',
+  alternates: {
+    canonical: '/calculators/deduction-invoice-auditor/'
+  }
 };
 
 const AUDITOR_FAQS = [

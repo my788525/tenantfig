@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import CookieConsent from '@/components/CookieConsent';
 import { JsonLd, webSiteJsonLd, organizationJsonLd } from '@/components/JsonLd';
 import './globals.css';
 
@@ -20,6 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tenantfig.com'),
+  alternates: {
+    canonical: './'
+  },
   title: {
     default: 'TenantFig — U.S. Tenant Statutory Defense & Deposit Recovery Platform',
     template: '%s | TenantFig'
@@ -79,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieConsent />
         <Script src="https://mail.lianu.com/matrix-analytics.js" strategy="afterInteractive" />
       </body>
     </html>

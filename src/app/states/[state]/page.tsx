@@ -16,7 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!s) return { title: 'State Not Found' };
   return {
     title: `${s.name} Security Deposit Laws & Tenant Statutes (2026)`,
-    description: `${s.name} (${s.statuteCitation}): ${s.itemizedReturnDays}-day security deposit return deadline, ${s.penaltyMultiplier}x statutory penalty, and $${s.smallClaimsLimitUsd.toLocaleString()} Small Claims limit.`
+    description: `${s.name} (${s.statuteCitation}): ${s.itemizedReturnDays}-day security deposit return deadline, ${s.penaltyMultiplier}x statutory penalty, and $${s.smallClaimsLimitUsd.toLocaleString()} Small Claims limit.`,
+    alternates: {
+      canonical: `/states/${s.slug}/`
+    }
   };
 }
 
@@ -33,6 +36,14 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
     {
       question: `What is the statutory penalty for wrongful deposit withholding in ${s.name}?`,
       answer: s.penaltySummary
+    },
+    {
+      question: `Can a ${s.name} landlord deduct for normal carpet wear or routine repainting?`,
+      answer: `No. Under ${s.name} landlord-tenant law and HUD Handbook 4350.3 useful-life benchmarks, normal wear and tear—including minor scuffs, faded paint after 2–3 years, and ordinary carpet traffic after 5–7 years—cannot be charged to the tenant's security deposit.`
+    },
+    {
+      question: `What is the Small Claims Court limit and filing fee in ${s.name}?`,
+      answer: `In ${s.name}, tenants may file security deposit and statutory penalty claims in Small Claims Court for up to $${s.smallClaimsLimitUsd.toLocaleString()}, with typical initial filing fees around $${s.smallClaimsFilingFeeEstUsd}. ${s.attorneyFeesAllowed ? 'Prevailing tenants may also recover reasonable attorney fees where authorized by statute.' : 'Parties generally represent themselves without attorneys in Small Claims proceedings.'}`
     }
   ];
 
@@ -211,6 +222,76 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         </div>
       </div>
+
+      {/* Long-Form Statutory Execution Playbook (550-800+ words) */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+            EXECUTION PROTOCOL · {s.code}
+          </div>
+          <h2 className="text-xl font-extrabold text-[#0f2747]">
+            Step-by-Step Certified Mail Execution Protocol in {s.name}
+          </h2>
+          <p>
+            Recovering an unlawfully withheld security deposit in <strong>{s.name}</strong> depends on creating an airtight, court-admissible paper trail before the statutory <strong>{s.itemizedReturnDays}-day</strong> accounting window expires. Informal text messages, portal tickets, or phone calls rarely satisfy statutory notice requirements under <strong>{s.statuteCitation}</strong>.
+          </p>
+          <ol className="list-decimal pl-5 space-y-2.5">
+            <li>
+              <strong>Deliver Written Forwarding Address Notice:</strong> {s.forwardingAddressNote} Always transmit your forwarding address in writing on move-out day and retain proof of delivery so the landlord cannot claim the statutory clock never started.
+            </li>
+            <li>
+              <strong>Wait Out the {s.itemizedReturnDays}-Day Statutory Clock:</strong> Track calendar days from key surrender and forwarding-address receipt. Under {s.statuteCitation}, any itemized deduction statement or refund postmarked after day {s.itemizedReturnDays} ({s.undisputedReturnDays} days for undisputed portions) forfeits the landlord&apos;s right to withhold arbitrary charges in many disputes.
+            </li>
+            <li>
+              <strong>Send a USPS Certified Mail Demand Letter:</strong> Once the deadline lapses—or if the landlord submits inflated, unreceipted deductions—send a formal demand letter via USPS Certified Mail with Return Receipt Requested. Cite {s.statuteCitation}, itemize each disputed charge, demand full principal plus applicable <strong>{s.penaltyMultiplier}x</strong> statutory damages{s.fixedPenaltyUsd ? ` (plus $${s.fixedPenaltyUsd} fixed penalty)` : ''}, and set a firm 7-to-10-day cure deadline.
+            </li>
+            <li>
+              <strong>Preserve UCC § 3-311 Rights on Partial Checks:</strong> Never endorse or deposit a partial refund check marked &ldquo;Payment in Full&rdquo; or &ldquo;Accord and Satisfaction&rdquo; without first writing &ldquo;Under Protest — All Rights Reserved Without Prejudice&rdquo; or consulting local rules, as cashing a restricted check can waive your remaining claim.
+            </li>
+          </ol>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700 leading-relaxed">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#059669] font-bold">
+            VENUE &amp; EVIDENCE · {s.code}
+          </div>
+          <h2 className="text-xl font-extrabold text-[#0f2747]">
+            {s.name} Small Claims Filing &amp; Normal Wear Defense
+          </h2>
+          <p>
+            If the landlord ignores your Certified Mail demand, {s.name} Small Claims Court provides an accessible venue for claims up to <strong>${s.smallClaimsLimitUsd.toLocaleString()}</strong>, with typical filing fees starting near <strong>${s.smallClaimsFilingFeeEstUsd}</strong>. Because Small Claims judges expect concise documentary proof, organize your evidence binder into three chronological tabs: (1) executed lease and move-in condition checklist, (2) timestamped move-out walkthrough photos and videos, and (3) USPS Certified Mail receipts and bank/check records.
+          </p>
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+            <h3 className="text-sm font-extrabold text-[#0f2747]">
+              Normal Wear &amp; Tear vs. Actual Damage Defense
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Landlords routinely attempt to shift routine turnover costs—such as full apartment repainting, steam carpet cleaning, or replacing 6-year-old flooring—onto outgoing tenants. Across {s.name} courts, normal wear and tear is legally <strong>$0</strong>. Even when actual damage occurs beyond ordinary use, recovery is capped at the item&apos;s <em>depreciated remaining useful life</em> under HUD Handbook 4350.3 standards (typically 5–7 years for standard carpet and 2–3 years for interior paint), never brand-new replacement value.
+            </p>
+          </div>
+          <p className="text-xs text-slate-600">
+            <strong>Lease-Break &amp; Mitigation Note ({s.mitigationDuty}):</strong> If your dispute involves an early lease termination in {s.name}, remember that landlords are held to a <strong>{s.mitigationDuty}</strong> standard when re-renting the unit, preventing double-dipping on rent once a replacement tenant takes possession.
+          </p>
+        </div>
+      </section>
+
+      {/* State-Specific Statutory FAQs */}
+      <section className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4">
+        <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+          FREQUENTLY ASKED QUESTIONS · {s.name.toUpperCase()}
+        </div>
+        <h2 className="text-xl font-extrabold text-[#0f2747]">
+          {s.name} Security Deposit &amp; Small Claims FAQ (2026)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {faqs.map((f, idx) => (
+            <div key={idx} className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-1.5">
+              <h3 className="text-sm font-bold text-[#0f2747]">{f.question}</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">{f.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
