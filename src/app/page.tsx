@@ -69,34 +69,34 @@ export default function HomePage() {
 
       {/* Executive Hero */}
       <section className="bg-[#0f2747] text-white border-b border-[#c8a24a]/30">
-        <div className="container-page py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#09192e] border border-[#c8a24a]/50 text-[11px] font-mono text-[#e2be68]">
+        <div className="container-page px-5 sm:px-6 py-12 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="lg:col-span-7">
+            <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 px-3.5 py-1.5 rounded-full bg-[#09192e] border border-[#c8a24a]/50 text-[11px] font-mono text-[#e2be68] max-w-full">
               <span>51 US JURISDICTIONS</span>
-              <span>·</span>
+              <span aria-hidden="true">·</span>
               <span>25 METRO RENT CAPS</span>
-              <span>·</span>
+              <span aria-hidden="true">·</span>
               <span>2026 VERIFIED</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.12]">
+            <h1 className="mt-6 text-[28px] sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
               U.S. Tenant Statutory Defense &amp; Deposit Recovery Workbench
             </h1>
 
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+            <p className="mt-6 text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
               Audit withheld security deposits, prorate HUD carpet &amp; paint depreciation, verify CA AB 1482 &amp; NYC Good Cause rent caps, and generate printable 《Statutory Briefs》 with certified demand notices.
             </p>
 
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3.5 sm:gap-4">
               <Link
                 href="/calculators/security-deposit-penalty/"
-                className="px-5 py-3 rounded-xl bg-[#c8a24a] hover:bg-[#e2be68] text-[#09192e] font-extrabold text-sm transition shadow-lg"
+                className="px-5 py-3.5 rounded-xl bg-[#c8a24a] hover:bg-[#e2be68] text-[#09192e] font-extrabold text-sm text-center transition shadow-lg"
               >
                 Launch Deposit Penalty Audit →
               </Link>
               <Link
                 href="/states/"
-                className="px-5 py-3 rounded-xl bg-[#09192e] hover:bg-slate-900 text-white border border-white/20 font-bold text-sm transition"
+                className="px-5 py-3.5 rounded-xl bg-[#09192e] hover:bg-slate-900 text-white border border-white/20 font-bold text-sm text-center transition"
               >
                 Browse 51 State Statutes
               </Link>
@@ -104,33 +104,33 @@ export default function HomePage() {
           </div>
 
           {/* Right: Live Statutory Telemetry Snapshot */}
-          <div className="lg:col-span-5 bg-[#09192e] border border-[#c8a24a]/30 rounded-2xl p-6 space-y-4 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3">
+          <div className="lg:col-span-5 bg-[#09192e] border border-[#c8a24a]/30 rounded-2xl p-5 sm:p-6 space-y-4 shadow-2xl">
+            <div className="flex justify-between items-center gap-2 border-b border-white/10 pb-3">
               <span className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
                 2026 STATUTORY BENCHMARKS
               </span>
-              <span className="text-[11px] font-mono text-emerald-400">LIVE INDEX</span>
+              <span className="text-[11px] font-mono text-emerald-400 shrink-0">LIVE INDEX</span>
             </div>
-            <div className="space-y-2.5 text-xs">
-              <div className="flex justify-between py-1.5 border-b border-white/5">
+            <div className="space-y-3 text-xs">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 py-1.5 border-b border-white/5">
                 <span className="text-slate-300">California (Cal. Civ. Code § 1950.5)</span>
-                <span className="font-mono font-bold text-emerald-400 tabular-nums">21 Days · 2x Penalty</span>
+                <span className="font-mono font-bold text-emerald-400 tabular-nums shrink-0">21 Days · 2x Penalty</span>
               </div>
-              <div className="flex justify-between py-1.5 border-b border-white/5">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 py-1.5 border-b border-white/5">
                 <span className="text-slate-300">Texas (Tex. Prop. Code § 92.109)</span>
-                <span className="font-mono font-bold text-emerald-400 tabular-nums">30 Days · 3x + $100</span>
+                <span className="font-mono font-bold text-emerald-400 tabular-nums shrink-0">30 Days · 3x + $100</span>
               </div>
-              <div className="flex justify-between py-1.5 border-b border-white/5">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 py-1.5 border-b border-white/5">
                 <span className="text-slate-300">New York (N.Y. Gen. Oblig. § 7-108)</span>
-                <span className="font-mono font-bold text-emerald-400 tabular-nums">14 Days · 2x Forfeiture</span>
+                <span className="font-mono font-bold text-emerald-400 tabular-nums shrink-0">14 Days · 2x Forfeiture</span>
               </div>
-              <div className="flex justify-between py-1.5 border-b border-white/5">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 py-1.5 border-b border-white/5">
                 <span className="text-slate-300">Massachusetts (M.G.L. ch. 186 § 15B)</span>
-                <span className="font-mono font-bold text-emerald-400 tabular-nums">30 Days · 3x + Fees</span>
+                <span className="font-mono font-bold text-emerald-400 tabular-nums shrink-0">30 Days · 3x + Fees</span>
               </div>
-              <div className="flex justify-between py-1.5">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 py-1.5">
                 <span className="text-slate-300">Washington (RCW § 59.18.280)</span>
-                <span className="font-mono font-bold text-emerald-400 tabular-nums">30 Days · 2x + Fees</span>
+                <span className="font-mono font-bold text-emerald-400 tabular-nums shrink-0">30 Days · 2x + Fees</span>
               </div>
             </div>
           </div>
