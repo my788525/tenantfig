@@ -89,10 +89,16 @@ export default function HomePage() {
 
             <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3.5 sm:gap-4">
               <Link
-                href="/calculators/security-deposit-penalty/"
+                href="/wizard/"
                 className="px-5 py-3.5 rounded-xl bg-[#c8a24a] hover:bg-[#e2be68] text-[#09192e] font-extrabold text-sm text-center transition shadow-lg"
               >
-                Launch Deposit Penalty Audit →
+                Start 4-Step Action Wizard →
+              </Link>
+              <Link
+                href="/calculators/security-deposit-penalty/"
+                className="px-5 py-3.5 rounded-xl bg-[#059669] hover:bg-emerald-500 text-white font-extrabold text-sm text-center transition shadow-lg"
+              >
+                Launch Deposit Penalty Audit
               </Link>
               <Link
                 href="/states/"
@@ -148,7 +154,15 @@ export default function HomePage() {
               5 Executive Statutory Calculators
             </h2>
           </div>
-          <span className="text-xs text-slate-500">Pre-filled defaults · 3 presets each · Printable Brief</span>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/wizard/"
+              className="px-3.5 py-2 rounded-xl bg-[#0f2747] hover:bg-[#1a3b68] text-white text-xs font-bold transition"
+            >
+              Guided 4-Step Wizard →
+            </Link>
+            <span className="hidden sm:inline text-xs text-slate-500">Pre-filled defaults · 3 presets each · Printable Brief</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

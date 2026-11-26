@@ -10,6 +10,7 @@ const BASE = 'https://tenantfig.com';
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
+    '/wizard/',
     '/calculators/security-deposit-penalty/',
     '/calculators/wear-and-tear-deduction/',
     '/calculators/rent-increase-cap/',
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${r}`,
     lastModified: '2026-10-25',
     changeFrequency: r === '' ? 'daily' : 'weekly',
-    priority: r === '' ? 1.0 : r.startsWith('/calculators/') ? 0.9 : 0.8
+    priority: r === '' ? 1.0 : r === '/wizard/' ? 0.95 : r.startsWith('/calculators/') ? 0.9 : 0.8
   }));
 
   const stateRoutes: MetadataRoute.Sitemap = TENANT_STATUTES_2026.map((s) => ({

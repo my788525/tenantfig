@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 const NAV_LINKS = [
+  { href: '/wizard/', label: 'Action Wizard' },
   { href: '/calculators/security-deposit-penalty/', label: 'Deposit Penalty' },
   { href: '/calculators/wear-and-tear-deduction/', label: 'Wear & Tear' },
   { href: '/calculators/rent-increase-cap/', label: 'Rent Caps' },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 ];
 
 const MOBILE_CALCULATORS = [
+  { href: '/wizard/', label: '4-Step Action Wizard' },
   { href: '/calculators/security-deposit-penalty/', label: 'Security Deposit Penalty' },
   { href: '/calculators/wear-and-tear-deduction/', label: 'Wear & Tear Deduction' },
   { href: '/calculators/rent-increase-cap/', label: 'Rent Increase Cap' },

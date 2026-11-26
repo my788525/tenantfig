@@ -4,7 +4,7 @@
 
 This is the machine-readable companion to https://tenantfig.com/llms.txt. It lists every
 indexable page on tenantfig.com with its canonical URL.
-## Complete page index (102 pages)
+## Complete page index (103 pages)
 
 ### Home
 - [TenantFig — U.S. Tenant Statutory Defense & Deposit Recovery Platform](https://tenantfig.com)
@@ -133,3 +133,6 @@ indexable page on tenantfig.com with its canonical URL.
 
 ### /terms
 - [Terms of Use & Legal Disclaimer | TenantFig](https://tenantfig.com/terms/)
+
+### /wizard
+- [4-Step Tenant Action & Deposit Recovery Wizard (2026) | TenantFig](https://tenantfig.com/wizard/)
