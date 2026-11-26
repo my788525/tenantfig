@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Contact TenantFig — Statutory Corrections & Editorial Inquiries',
+  title: 'Contact TenantFig — Editorial & Corrections',
   description:
     'Contact the TenantFig statutory research team for legislative updates, municipal ordinance corrections, accessibility feedback, or licensing support.',
   alternates: {

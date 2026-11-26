@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: './'
   },
   title: {
-    default: 'TenantFig — U.S. Tenant Statutory Defense & Deposit Recovery Platform',
+    default: 'TenantFig — 2026 U.S. Tenant & Deposit Defense',
     template: '%s | TenantFig'
   },
   description:

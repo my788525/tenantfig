@@ -3,7 +3,7 @@ import RentIncreaseCapCalc from '@/components/calculators/RentIncreaseCapCalc';
 import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Rent Increase Cap Auditor (CA AB 1482, NYC Good Cause, 25 Cities)',
+  title: 'Rent Increase Cap Auditor (25 Cities, 2026)',
   description:
     'Audit proposed rent hikes against CA AB 1482, NYC Good Cause Eviction, LA RSO, SF, Seattle, Portland, and 25 major metro ordinances.',
   alternates: {

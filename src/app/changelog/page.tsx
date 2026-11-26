@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: '2026 Statutory Changelog — Legislative & Ordinance Updates',
+  title: '2026 Statutory Changelog & Ordinance Updates',
   description:
     'Legislative updates tracked across US tenant statutes in 2024–2026: CA AB 12, NYC Good Cause Eviction, WA HB 1217, MD HB 693, and CT PA 23-207.',
   alternates: {

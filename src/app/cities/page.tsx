@@ -5,7 +5,7 @@ import { CITY_RENT_CAPS_2026 } from '@/data/city_rent_caps_2026';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Top 25 U.S. Metro Rent Control & Notice Ordinances (2026)',
+  title: '25 U.S. Metro Rent Control Ordinances (2026)',
   description:
     'Municipal rent increase caps, Good Cause Eviction rules, notice periods, and relocation assistance across the top 25 U.S. metro cities.',
   alternates: {

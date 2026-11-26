@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { CITY_RENT_CAPS_2026, getCityBySlug } from '@/data/city_rent_caps_2026';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import { fitTitle } from '@/lib/seo';
 
 export function generateStaticParams() {
   return CITY_RENT_CAPS_2026.map((c) => ({ city: c.slug }));
@@ -14,8 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const { city } = await params;
   const c = getCityBySlug(city);
   if (!c) return { title: 'City Not Found' };
+  const fullTitle = `${c.city}, ${c.stateCode} Rent Cap & Notice Laws (2026)`;
+  const pageTitle = fullTitle.length <= 48 ? fullTitle : fitTitle(`${c.city}, ${c.stateCode} Rent Cap (2026)`, 48);
   return {
-    title: `${c.city}, ${c.stateCode} Rent Increase Cap & Notice Laws (2026)`,
+    title: pageTitle,
     description: `${c.ordinanceName}: ${c.annualCapFormula}. ${c.noticeDaysRequired}-day notice requirement and exemptions.`,
     alternates: {
       canonical: `/cities/${c.slug}/`

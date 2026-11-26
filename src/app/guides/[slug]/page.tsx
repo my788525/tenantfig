@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { GUIDES_2026 } from '@/data/cases_and_guides';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import { fitTitle } from '@/lib/seo';
 
 export function generateStaticParams() {
   return GUIDES_2026.map((g) => ({ slug: g.slug }));
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const g = GUIDES_2026.find((x) => x.slug === slug);
   if (!g) return { title: 'Guide Not Found' };
   return {
-    title: g.title,
+    title: fitTitle(g.title, 48),
     description: g.summary,
     alternates: {
       canonical: `/guides/${g.slug}/`

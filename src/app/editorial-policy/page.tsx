@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Editorial Policy & Primary-Source Citation Standards',
+  title: 'Editorial Policy & Citation Standards',
   description:
     'TenantFig Editorial Policy: how we research, cite, fact-check, and update 51-state landlord-tenant statutes, HUD depreciation schedules, and metro rent caps.',
   alternates: {

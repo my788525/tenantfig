@@ -5,18 +5,78 @@ import Link from 'next/link';
 
 const STORAGE_KEY = 'tenantfig_cookie_consent';
 
+const EU_UK_CH_COUNTRIES = new Set([
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR',
+  'HU', 'IS', 'IE', 'IT', 'LV', 'LI', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL',
+  'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'CH', 'GB', 'UK'
+]);
+
+const US_PRIVACY_STATES = new Set([
+  'CA', 'VA', 'CO', 'CT', 'UT', 'TX', 'OR', 'MT', 'FL', 'IA',
+  'IN', 'TN', 'DE', 'NE', 'NH', 'NJ', 'MN', 'MD', 'KY', 'RI'
+]);
+
+function shouldShowForGeo(country: string, regionCode: string): boolean {
+  if (EU_UK_CH_COUNTRIES.has(country)) return true;
+  return country === 'US' && US_PRIVACY_STATES.has(regionCode);
+}
+
+async function fetchWithTimeout(url: string, timeoutMs = 2000): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { cache: 'no-store', signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) {
-        setVisible(true);
-      }
+      if (saved) return;
     } catch {
-      // Ignore storage access errors in restricted browsers
+      return;
     }
+
+    (async () => {
+      try {
+        const res = await fetchWithTimeout('/api/geo', 2000);
+        if (res.ok) {
+          const data = (await res.json()) as { country?: string; regionCode?: string };
+          const country = (data.country ?? '').trim().toUpperCase();
+          const regionCode = (data.regionCode ?? '').trim().toUpperCase();
+          if (!cancelled && shouldShowForGeo(country, regionCode)) {
+            setVisible(true);
+          }
+          return;
+        }
+      } catch {
+        // Fall through to /cdn-cgi/trace fallback
+      }
+
+      try {
+        const traceRes = await fetchWithTimeout('/cdn-cgi/trace', 2000);
+        if (traceRes.ok) {
+          const text = await traceRes.text();
+          const match = text.match(/^loc=([A-Z]{2})$/m);
+          const country = match ? match[1].toUpperCase() : '';
+          if (!cancelled && EU_UK_CH_COUNTRIES.has(country)) {
+            setVisible(true);
+          }
+        }
+      } catch {
+        // Geo detection failed; keep banner hidden
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleChoice = (choice: 'accepted' | 'essential') => {

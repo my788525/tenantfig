@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { TENANT_STATUTES_2026, getStateBySlug } from '@/data/tenant_statutes_2026';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import { fitTitle } from '@/lib/seo';
 
 export function generateStaticParams() {
   return TENANT_STATUTES_2026.map((s) => ({ state: s.slug }));
@@ -14,8 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   const { state } = await params;
   const s = getStateBySlug(state);
   if (!s) return { title: 'State Not Found' };
+  const fullTitle = `${s.name} Deposit Laws & Deadlines (2026)`;
+  const pageTitle = fullTitle.length <= 48 ? fullTitle : fitTitle(`${s.name} Deposit Laws (2026)`, 48);
   return {
-    title: `${s.name} Security Deposit Laws & Tenant Statutes (2026)`,
+    title: pageTitle,
     description: `${s.name} (${s.statuteCitation}): ${s.itemizedReturnDays}-day security deposit return deadline, ${s.penaltyMultiplier}x statutory penalty, and $${s.smallClaimsLimitUsd.toLocaleString()} Small Claims limit.`,
     alternates: {
       canonical: `/states/${s.slug}/`

@@ -3,7 +3,7 @@ import DeductionInvoiceAuditor from '@/components/calculators/DeductionInvoiceAu
 import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Itemized Move-Out Deduction & Receipt Auditor (2026 State Thresholds)',
+  title: 'Move-Out Deduction & Receipt Auditor (2026)',
   description:
     'Audit move-out cleaning, repainting, carpet, and blinds deductions against state vendor-receipt thresholds (e.g. CA $125 rule), HUD useful-life caps, and metro market benchmarks.',
   alternates: {

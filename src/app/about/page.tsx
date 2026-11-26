@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'About TenantFig — U.S. Tenant Statutory Defense Platform',
+  title: 'About TenantFig — U.S. Tenant Defense',
   description:
     'About TenantFig — institutional-grade US tenant statutory defense, 51-state security deposit recovery modeling, and HUD depreciation benchmarks.',
   alternates: {

@@ -6,7 +6,7 @@ import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 
 export const metadata: Metadata = {
-  title: 'Real-World Tenant Pitfalls, Black Holes & Survival Playbook (2026)',
+  title: 'Tenant Pitfalls & Survival Playbook (2026)',
   description:
     '6 real-case tenant traps that silently forfeit security deposits and rent-cap rights: missing forwarding address, UCC § 3-311 "Payment in Full" checks, mailbox key-drops, text vs. Certified Mail, HUD carpet/paint depreciation, and AB 1482 exemption loopholes.',
   alternates: {

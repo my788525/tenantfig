@@ -5,7 +5,7 @@ import { GUIDES_2026 } from '@/data/cases_and_guides';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Tenant Statutory Defense Guides & Direct-Answer Playbooks (2026)',
+  title: '2026 Tenant Statutory Defense Guides',
   description:
     'Deep-dive guides on security deposit return deadlines, HUD carpet & paint depreciation, CA AB 1482 & NYC Good Cause rent caps, and Small Claims Court ROI.',
   alternates: {

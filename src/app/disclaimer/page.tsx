@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Legal Disclaimer — Educational Statutory Modeling Only',
+  title: 'Legal Disclaimer — Educational Modeling Only',
   description:
     'TenantFig Legal Disclaimer: not a law firm, no attorney-client relationship, statutory modeling limitations, and jurisdictional verification notice.',
   alternates: {

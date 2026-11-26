@@ -3,7 +3,7 @@ import LeaseBreakCalc from '@/components/calculators/LeaseBreakCalc';
 import { JsonLd, breadcrumbJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Lease Break Mitigation & Settlement Calculator (50 States, 2026)',
+  title: 'Lease Break Mitigation Calculator (2026)',
   description:
     'Model landlord duty to mitigate damages, vacancy proration, and early-termination buyout ROI across all 51 US jurisdictions.',
   alternates: {

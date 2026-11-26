@@ -3,7 +3,7 @@ import LeaseClauseScanner from '@/components/calculators/LeaseClauseScanner';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Lease Red-Flag & Illegal Clause Scanner (51-State 2026 Audit)',
+  title: 'Lease Red-Flag & Illegal Clause Scanner (2026)',
   description:
     'Scan residential lease clauses for illegal non-refundable deposits, wear-and-tear waivers, warrantless entry, and rent-cap violations across all 51 U.S. jurisdictions.',
   alternates: {

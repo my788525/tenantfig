@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { CASE_STUDIES_2026 } from '@/data/cases_and_guides';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import { fitTitle } from '@/lib/seo';
 
 export function generateStaticParams() {
   return CASE_STUDIES_2026.map((c) => ({ slug: c.slug }));
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cs = CASE_STUDIES_2026.find((c) => c.slug === slug);
   if (!cs) return { title: 'Case Not Found' };
   return {
-    title: cs.title,
+    title: fitTitle(cs.title, 48),
     description: cs.outcomeSummary,
     alternates: {
       canonical: `/cases/${cs.slug}/`

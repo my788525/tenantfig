@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Audit Methodology & Statutory Verification Standards',
+  title: 'Audit Methodology & Verification Standards',
   description:
     'How TenantFig verifies 51-state deposit deadlines, HUD 4350.3 depreciation schedules, IRS MACRS benchmarks, and municipal rent caps.',
   alternates: {

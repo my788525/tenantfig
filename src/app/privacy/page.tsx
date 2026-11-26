@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Client-Side Privacy, Cookies & AdSense Disclosures',
+  title: 'Privacy Policy & Cookie Disclosures',
   description:
     'TenantFig Privacy Policy: 100% client-side calculator execution, Google AdSense & DART cookie disclosures, GDPR rights, and CCPA/CPRA compliance.',
   alternates: {
