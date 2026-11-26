@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from '@/components/JsonLd';
+import ContactMessageForm from '@/components/ContactMessageForm';
 
 export const metadata: Metadata = {
   title: 'Contact TenantFig — Editorial & Corrections',
@@ -30,6 +31,8 @@ export default function ContactPage() {
           Direct channels for statutory dataset corrections, municipal ordinance updates, privacy requests, and digital kit support.
         </p>
       </div>
+
+      <ContactMessageForm />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 text-sm text-slate-700 leading-relaxed">
