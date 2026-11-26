@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/states/',
     '/cities/',
     '/cases/',
+    '/pitfalls/',
     '/guides/',
     '/methodology/',
     '/statutes/',
@@ -35,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}${r}`,
     lastModified: '2026-10-25',
     changeFrequency: r === '' ? 'daily' : 'weekly',
-    priority: r === '' ? 1.0 : r === '/wizard/' ? 0.95 : r.startsWith('/calculators/') ? 0.9 : 0.8
+    priority: r === '' ? 1.0 : r === '/wizard/' ? 0.95 : r === '/pitfalls/' || r.startsWith('/calculators/') ? 0.9 : 0.8
   }));
 
   const stateRoutes: MetadataRoute.Sitemap = TENANT_STATUTES_2026.map((s) => ({

@@ -37,6 +37,7 @@ export default function Footer() {
             <li><Link href="/states/" className="hover:text-white">All 50 States + DC Statutes</Link></li>
             <li><Link href="/cities/" className="hover:text-white">Top 25 Metro Rent Caps</Link></li>
             <li><Link href="/cases/" className="hover:text-white">Real-Ledger Case Studies</Link></li>
+            <li><Link href="/pitfalls/" className="hover:text-white">Pitfalls &amp; Traps Playbook</Link></li>
             <li><Link href="/guides/" className="hover:text-white">Statutory Defense Guides</Link></li>
             <li><Link href="/statutes/" className="hover:text-white">Master Citation Ledger</Link></li>
           </ul>

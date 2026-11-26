@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: '/calculators/rent-increase-cap/', label: 'Rent Caps' },
   { href: '/states/', label: '51 States' },
   { href: '/cities/', label: '25 Cities' },
+  { href: '/pitfalls/', label: 'Pitfalls & Traps' },
   { href: '/guides/', label: 'Guides' }
 ];
 
@@ -30,6 +31,7 @@ const MOBILE_DIRECTORY = [
   { href: '/states/', label: '51 States' },
   { href: '/cities/', label: '25 Cities' },
   { href: '/cases/', label: 'Cases' },
+  { href: '/pitfalls/', label: 'Pitfalls & Traps' },
   { href: '/guides/', label: 'Guides' },
   { href: '/statutes/', label: 'Statute Index' },
   { href: '/methodology/', label: 'Methodology' },

@@ -5,6 +5,7 @@ import { CITY_RENT_CAPS_2026 } from '@/data/city_rent_caps_2026';
 import { CASE_STUDIES_2026, GUIDES_2026 } from '@/data/cases_and_guides';
 import { JsonLd, faqJsonLd } from '@/components/JsonLd';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import HiddenTrapsCallout from '@/components/HiddenTrapsCallout';
 
 const CALCULATORS = [
   {
@@ -159,6 +160,7 @@ export default function HomePage() {
 
       {/* 5 Executive Calculators */}
       <section className="container-page py-12 space-y-6">
+        <HiddenTrapsCallout variant="home" />
         <div className="flex flex-wrap justify-between items-end gap-2">
           <div>
             <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
