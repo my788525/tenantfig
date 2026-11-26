@@ -38,6 +38,7 @@ export default function ToolPaywallDossier({
   sampleLines
 }: ToolPaywallDossierProps) {
   const [showQr, setShowQr] = useState(false);
+  const [previewTab, setPreviewTab] = useState<'docx' | 'xlsx'>('docx');
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [hasActivePass, setHasActivePass] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
@@ -208,6 +209,49 @@ export default function ToolPaywallDossier({
                 <span className="text-slate-400">Deposit_Depreciation_Audit.xlsx</span>
                 <span className="text-[#c8a24a]">Formulas</span>
               </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800 space-y-2">
+              <div className="flex items-center justify-between gap-1 text-[10px] font-mono">
+                <span className="text-[#e2be68] font-bold">LIVE KIT PREVIEW</span>
+                <div className="flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewTab('docx')}
+                    className={`px-2 py-0.5 rounded cursor-pointer ${previewTab === 'docx' ? 'bg-[#c8a24a] text-[#09192e] font-bold' : 'bg-slate-800 text-slate-300'}`}
+                  >
+                    .DOCX
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewTab('xlsx')}
+                    className={`px-2 py-0.5 rounded cursor-pointer ${previewTab === 'xlsx' ? 'bg-[#059669] text-white font-bold' : 'bg-slate-800 text-slate-300'}`}
+                  >
+                    .XLSX
+                  </button>
+                </div>
+              </div>
+              {previewTab === 'docx' ? (
+                <div className="bg-white/95 text-slate-900 rounded-lg p-2.5 text-[10px] leading-snug space-y-1 font-serif">
+                  <div className="font-bold text-[#0f2747] uppercase tracking-wider text-[9px] font-mono">
+                    CERTIFIED MAIL · RETURN RECEIPT
+                  </div>
+                  <div className="font-bold">Re: Statutory Demand for Deposit &amp; Penalty</div>
+                  <div className="h-1.5 w-4/5 bg-slate-200 rounded" />
+                  <div className="text-[9px] text-slate-600">
+                    Pursuant to governing state deposit statute, full itemized accounting &amp; HUD depreciation...
+                  </div>
+                  <div className="h-1.5 w-3/5 bg-slate-200 rounded" />
+                </div>
+              ) : (
+                <div className="bg-slate-950 border border-slate-700 rounded-lg p-2 text-[9px] font-mono text-slate-300 space-y-1">
+                  <div className="grid grid-cols-3 text-emerald-400 font-bold border-b border-slate-800 pb-0.5">
+                    <span>Item</span><span>HUD Cap</span><span>Disputed</span>
+                  </div>
+                  <div className="grid grid-cols-3"><span>Carpet (4yr)</span><span>20%</span><span className="text-[#e2be68]">$1,120</span></div>
+                  <div className="grid grid-cols-3"><span>Paint (3yr)</span><span>0%</span><span className="text-[#e2be68]">$480</span></div>
+                </div>
+              )}
             </div>
           </div>
         </div>

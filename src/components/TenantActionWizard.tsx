@@ -7,6 +7,7 @@ import StatutoryBriefBox from '@/components/StatutoryBriefBox';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 import IcsDeadlineButton from '@/components/IcsDeadlineButton';
 import HiddenTrapsCallout from '@/components/HiddenTrapsCallout';
+import WizardLeadEscalation from '@/components/WizardLeadEscalation';
 
 type DisputeScenario = 'deposit' | 'rent_hike' | 'lease_break' | 'small_claims';
 
@@ -721,6 +722,14 @@ Failure to cure within 7 business days will result in formal escalation to Small
               </div>
             );
           })()}
+
+          <WizardLeadEscalation
+            stateAbbr={selectedState.code}
+            stateName={selectedState.name}
+            exposureAmount={audit.estimatedRecovery}
+            summaryText={audit.noticeText}
+            statuteCitation={selectedState.statuteCitation}
+          />
 
           {/* Matched Dodo Product via ToolPaywallDossier */}
           <ToolPaywallDossier
