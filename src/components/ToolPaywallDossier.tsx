@@ -103,7 +103,8 @@ export default function ToolPaywallDossier({
 
   return (
     <div
-      className="my-10 bg-[#0f2747] border border-[#c8a24a]/40 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden no-print"
+      id="matrix-offer"
+      className="my-10 bg-[#0f2747] border border-[#c8a24a]/40 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden no-print scroll-mt-20"
       data-matrix-offer="1"
       data-offer-slot="inline"
       data-offer-id={pid}
@@ -225,6 +226,27 @@ export default function ToolPaywallDossier({
             {dynamicAmount ? `Download ${dynamicAmount} Recovery & Demand Suite` : title}
           </h3>
           <p className="text-sm text-slate-300">{desc}</p>
+
+          {/* Free vs VIP Contrast Box */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div className="bg-[#09192e]/80 border border-emerald-500/30 rounded-xl p-3 space-y-1">
+              <div className="font-bold text-emerald-400 uppercase tracking-wider text-[10px]">
+                ✓ Already Included Free
+              </div>
+              <p className="text-slate-300 leading-relaxed">
+                Printable 《Statutory Brief》 (PDF), 3-line statutory summary, and plain-text notice.
+              </p>
+            </div>
+            <div className="bg-[#c8a24a]/10 border border-[#c8a24a]/40 rounded-xl p-3 space-y-1">
+              <div className="font-bold text-[#e2be68] uppercase tracking-wider text-[10px]">
+                ★ VIP Turnkey Kit ({price})
+              </div>
+              <p className="text-slate-200 leading-relaxed">
+                Court-ready <strong className="text-white">.DOCX Certified Mail Demand Letter</strong> +{' '}
+                <strong className="text-white">.XLSX Depreciation &amp; Evidence Ledger</strong>.
+              </p>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-200">
             {features.map((f, i) => (

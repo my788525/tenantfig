@@ -6,6 +6,7 @@ import StatutoryBriefBox from '@/components/StatutoryBriefBox';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 
 export default function RentIncreaseCapCalc() {
+  const [mode, setMode] = useState<'quick' | 'pro'>('quick');
   const [citySlug, setCitySlug] = useState('new-york-city');
   const [currentRent, setCurrentRent] = useState(3300);
   const [proposedRent, setProposedRent] = useState(3680);
@@ -91,8 +92,34 @@ Please issue a compliant renewal offer at or below ${fmt(results.maxLegalRent)}/
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">Executive Presets:</span>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="inline-flex rounded-xl bg-slate-200/80 p-1 border border-slate-300">
+          <button
+            type="button"
+            onClick={() => setMode('quick')}
+            className={`px-4 py-2 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+              mode === 'quick'
+                ? 'bg-[#0f2747] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0f2747]'
+            }`}
+          >
+            ⚡ Quick Check (30s)
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode('pro')}
+            className={`px-4 py-2 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+              mode === 'pro'
+                ? 'bg-[#0f2747] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0f2747]'
+            }`}
+          >
+            🔬 Forensic Pro Audit
+          </button>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">Executive Presets:</span>
         <button
           type="button"
           onClick={() => applyPreset('nyc')}
@@ -114,13 +141,19 @@ Please issue a compliant renewal offer at or below ${fmt(results.maxLegalRent)}/
         >
           Seattle WA (60d vs 180d Notice)
         </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-          <h2 className="text-base font-extrabold text-[#0f2747] border-b border-slate-100 pb-3">
-            Rent Increase Audit Inputs
-          </h2>
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h2 className="text-base font-extrabold text-[#0f2747]">
+              {mode === 'quick' ? 'Quick Check (3 Essential Inputs)' : 'Forensic Pro Audit Inputs'}
+            </h2>
+            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-bold">
+              {mode === 'quick' ? '30s Mode' : 'Full Audit'}
+            </span>
+          </div>
 
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">Metro City (25 Jurisdictions)</label>
@@ -158,37 +191,49 @@ Please issue a compliant renewal offer at or below ${fmt(results.maxLegalRent)}/
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Local CPI (%)</label>
-              <input
-                type="number"
-                step="0.1"
-                value={localCpi}
-                onChange={(e) => setLocalCpi(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Notice Given (Days)</label>
-              <input
-                type="number"
-                value={noticeDaysGiven}
-                onChange={(e) => setNoticeDaysGiven(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
-              />
-            </div>
-          </div>
+          {mode === 'quick' ? (
+            <button
+              type="button"
+              onClick={() => setMode('pro')}
+              className="w-full text-left text-[11px] font-semibold text-[#0f2747] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl p-3 transition cursor-pointer"
+            >
+              + Unlock Forensic Pro Audit (Local CPI %, notice period compliance &amp; unit exemption check) →
+            </button>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Local CPI (%)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={localCpi}
+                    onChange={(e) => setLocalCpi(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Notice Given (Days)</label>
+                  <input
+                    type="number"
+                    value={noticeDaysGiven}
+                    onChange={(e) => setNoticeDaysGiven(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+              </div>
 
-          <label className="flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer pt-1">
-            <input
-              type="checkbox"
-              checked={isCoveredUnit}
-              onChange={(e) => setIsCoveredUnit(e.target.checked)}
-              className="rounded border-slate-300"
-            />
-            <span>Unit covered by local / state cap (not new-construction exempt)</span>
-          </label>
+              <label className="flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer pt-1">
+                <input
+                  type="checkbox"
+                  checked={isCoveredUnit}
+                  onChange={(e) => setIsCoveredUnit(e.target.checked)}
+                  className="rounded border-slate-300"
+                />
+                <span>Unit covered by local / state cap (not new-construction exempt)</span>
+              </label>
+            </>
+          )}
         </div>
 
         <div className="lg:col-span-7 bg-[#0f2747] text-white rounded-2xl p-6 shadow-md space-y-5">

@@ -180,6 +180,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 35-40% Scroll Depth Offer Placement */}
+      <section className="container-page pb-4">
+        <ToolPaywallDossier />
+      </section>
+
       {/* Real-Ledger Case Studies */}
       <section className="bg-white border-y border-slate-200 py-12">
         <div className="container-page space-y-6">
@@ -282,8 +287,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-
-        <ToolPaywallDossier />
       </section>
     </div>
   );

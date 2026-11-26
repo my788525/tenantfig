@@ -6,12 +6,14 @@ import StatutoryBriefBox from '@/components/StatutoryBriefBox';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
 
 export default function DepositPenaltyCalc() {
+  const [mode, setMode] = useState<'quick' | 'pro'>('quick');
   const [stateCode, setStateCode] = useState('CA');
   const [depositPaid, setDepositPaid] = useState(3600);
   const [withheldAmount, setWithheldAmount] = useState(2800);
   const [daysSinceMoveOut, setDaysSinceMoveOut] = useState(26);
   const [forwardingSentDay, setForwardingSentDay] = useState(0);
   const [itemizedReceived, setItemizedReceived] = useState<'none' | 'late' | 'timely'>('late');
+  const [wearAndTearDeduction, setWearAndTearDeduction] = useState(850);
   const [badFaith, setBadFaith] = useState(true);
 
   const statute = useMemo(
@@ -67,6 +69,9 @@ export default function DepositPenaltyCalc() {
     }
     const totalClaim = principalClaim + statutoryDamages;
     const withinSmallClaims = totalClaim <= statute.smallClaimsLimitUsd;
+    const filingFee = statute.smallClaimsFilingFeeEstUsd || 75;
+    const netRecoveryAfterFee = Math.max(0, totalClaim - filingFee);
+    const filingRoiMultiple = filingFee > 0 ? (totalClaim / filingFee).toFixed(1) : '0.0';
 
     return {
       effectiveDaysElapsed,
@@ -76,7 +81,10 @@ export default function DepositPenaltyCalc() {
       principalClaim,
       statutoryDamages,
       totalClaim,
-      withinSmallClaims
+      withinSmallClaims,
+      filingFee,
+      netRecoveryAfterFee,
+      filingRoiMultiple
     };
   }, [statute, withheldAmount, daysSinceMoveOut, forwardingSentDay, itemizedReceived, badFaith]);
 
@@ -100,9 +108,35 @@ Sincerely,
 
   return (
     <div className="space-y-8">
-      {/* Presets */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">Executive Presets:</span>
+      {/* Dual-Mode Toggle + Presets */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="inline-flex rounded-xl bg-slate-200/80 p-1 border border-slate-300">
+          <button
+            type="button"
+            onClick={() => setMode('quick')}
+            className={`px-4 py-2 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+              mode === 'quick'
+                ? 'bg-[#0f2747] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0f2747]'
+            }`}
+          >
+            ⚡ Quick Check (30s)
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode('pro')}
+            className={`px-4 py-2 rounded-lg text-xs font-extrabold transition cursor-pointer ${
+              mode === 'pro'
+                ? 'bg-[#0f2747] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0f2747]'
+            }`}
+          >
+            🔬 Forensic Pro Audit
+          </button>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">Executive Presets:</span>
         <button
           type="button"
           onClick={() => applyPreset('oakland')}
@@ -124,18 +158,24 @@ Sincerely,
         >
           Brooklyn, NY ($3,400 · 14d)
         </button>
+        </div>
       </div>
 
       {/* 2-Column Workbench */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left: Inputs */}
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-          <h2 className="text-base font-extrabold text-[#0f2747] border-b border-slate-100 pb-3">
-            Case Parameters
-          </h2>
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h2 className="text-base font-extrabold text-[#0f2747]">
+              {mode === 'quick' ? 'Quick Check (3 Essential Inputs)' : 'Forensic Pro Audit Parameters'}
+            </h2>
+            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-bold">
+              {mode === 'quick' ? '30s Mode' : 'Full Audit'}
+            </span>
+          </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Jurisdiction (51 States + DC)</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">1. Jurisdiction (51 States + DC)</label>
             <select
               value={stateCode}
               onChange={(e) => setStateCode(e.target.value)}
@@ -149,71 +189,118 @@ Sincerely,
             </select>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Total Deposit ($)</label>
-              <input
-                type="number"
-                value={depositPaid}
-                onChange={(e) => setDepositPaid(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Wrongfully Withheld ($)</label>
-              <input
-                type="number"
-                value={withheldAmount}
-                onChange={(e) => setWithheldAmount(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
-              />
-            </div>
-          </div>
+          {mode === 'quick' ? (
+            <>
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">2. Deposit Withheld ($)</label>
+                <input
+                  type="number"
+                  value={withheldAmount}
+                  onChange={(e) => {
+                    const val = Math.max(0, Number(e.target.value));
+                    setWithheldAmount(val);
+                    if (val > depositPaid) setDepositPaid(val);
+                  }}
+                  className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">3. Days Since Move-Out</label>
+                <input
+                  type="number"
+                  value={daysSinceMoveOut}
+                  onChange={(e) => setDaysSinceMoveOut(Math.max(0, Number(e.target.value)))}
+                  className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => setMode('pro')}
+                className="w-full text-left text-[11px] font-semibold text-[#0f2747] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl p-3 transition cursor-pointer"
+              >
+                + Unlock Forensic Pro Audit (forwarding address date, itemized status, carpet/paint wear deductions &amp; Small Claims ROI) →
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Total Deposit ($)</label>
+                  <input
+                    type="number"
+                    value={depositPaid}
+                    onChange={(e) => setDepositPaid(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Wrongfully Withheld ($)</label>
+                  <input
+                    type="number"
+                    value={withheldAmount}
+                    onChange={(e) => setWithheldAmount(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+              </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Days Since Move-Out</label>
-              <input
-                type="number"
-                value={daysSinceMoveOut}
-                onChange={(e) => setDaysSinceMoveOut(Math.max(0, Number(e.target.value)))}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Forwarding Addr Day</label>
-              <input
-                type="number"
-                value={forwardingSentDay}
-                onChange={(e) => setForwardingSentDay(Math.max(0, Number(e.target.value)))}
-                disabled={!statute.forwardingAddressTrigger}
-                className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums disabled:bg-slate-100"
-              />
-            </div>
-          </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Days Since Move-Out</label>
+                  <input
+                    type="number"
+                    value={daysSinceMoveOut}
+                    onChange={(e) => setDaysSinceMoveOut(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Forwarding Addr Day</label>
+                  <input
+                    type="number"
+                    value={forwardingSentDay}
+                    onChange={(e) => setForwardingSentDay(Math.max(0, Number(e.target.value)))}
+                    disabled={!statute.forwardingAddressTrigger}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums disabled:bg-slate-100"
+                  />
+                </div>
+              </div>
 
-          <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Itemized Statement Status</label>
-            <select
-              value={itemizedReceived}
-              onChange={(e) => setItemizedReceived(e.target.value as 'none' | 'late' | 'timely')}
-              className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-white"
-            >
-              <option value="none">No Itemized Statement Received</option>
-              <option value="late">Received Past Statutory Deadline</option>
-              <option value="timely">Received On Time (Disputing Deductions)</option>
-            </select>
-          </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Itemized Statement</label>
+                  <select
+                    value={itemizedReceived}
+                    onChange={(e) => setItemizedReceived(e.target.value as 'none' | 'late' | 'timely')}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm bg-white"
+                  >
+                    <option value="none">None Received</option>
+                    <option value="late">Received Late</option>
+                    <option value="timely">Timely (Disputed)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Carpet/Paint Wear ($)</label>
+                  <input
+                    type="number"
+                    value={wearAndTearDeduction}
+                    onChange={(e) => setWearAndTearDeduction(Math.max(0, Number(e.target.value)))}
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm tabular-nums"
+                  />
+                </div>
+              </div>
 
-          <label className="flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer pt-1">
-            <input
-              type="checkbox"
-              checked={badFaith}
-              onChange={(e) => setBadFaith(e.target.checked)}
-              className="rounded border-slate-300"
-            />
-            <span>Bad-faith retention / missing receipts ({statute.penaltyMultiplier}x eligible)</span>
-          </label>
+              <label className="flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer pt-1">
+                <input
+                  type="checkbox"
+                  checked={badFaith}
+                  onChange={(e) => setBadFaith(e.target.checked)}
+                  className="rounded border-slate-300"
+                />
+                <span>Bad-faith retention / missing receipts ({statute.penaltyMultiplier}x eligible)</span>
+              </label>
+            </>
+          )}
         </div>
 
         {/* Right: Live Statutory Output */}
@@ -268,6 +355,20 @@ Sincerely,
                   {fmt(statute.smallClaimsLimitUsd)} ({results.withinSmallClaims ? 'Eligible' : 'Exceeds Limit'})
                 </strong>
               </div>
+              {mode === 'pro' && (
+                <>
+                  <div>
+                    <span className="text-slate-400">Small Claims Filing ROI:</span>{' '}
+                    <strong className="text-emerald-400 tabular-nums">
+                      {results.filingRoiMultiple}x (Est. Fee {fmt(results.filingFee)} → Net {fmt(results.netRecoveryAfterFee)})
+                    </strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400">Carpet/Paint Wear Disputed:</span>{' '}
+                    <strong className="text-[#c8a24a] tabular-nums">{fmt(wearAndTearDeduction)}</strong>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

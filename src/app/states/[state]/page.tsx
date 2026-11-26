@@ -49,7 +49,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
         ]}
       />
 
-      <div className="space-y-2 border-b border-slate-200 pb-6">
+      <div className="space-y-3 border-b border-slate-200 pb-6">
         <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
           {s.code} · {s.statuteCitation}
         </div>
@@ -57,7 +57,71 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           {s.name} Tenant Statutory Defense &amp; Security Deposit Law (2026)
         </h1>
         <p className="text-sm text-slate-600 max-w-3xl">{s.keyExecutiveTakeaway}</p>
+
+        {/* Quick-Jump Anchor Pills */}
+        <div className="flex flex-wrap gap-2 pt-2">
+          <a href="#calculator" className="px-3 py-1 rounded-full bg-[#0f2747] text-white text-xs font-bold hover:bg-[#1a3b68]">
+            Calculator ↓
+          </a>
+          <a href="#statutes" className="px-3 py-1 rounded-full bg-white border border-slate-300 text-[#0f2747] text-xs font-bold hover:border-[#0f2747]">
+            Statutes ↓
+          </a>
+          <a href="#checklist" className="px-3 py-1 rounded-full bg-white border border-slate-300 text-[#0f2747] text-xs font-bold hover:border-[#0f2747]">
+            Action Checklist ↓
+          </a>
+          <a href="#matrix-offer" className="px-3 py-1 rounded-full bg-amber-50 border border-[#c8a24a]/60 text-[#0f2747] text-xs font-bold hover:bg-amber-100">
+            Demand Kit ↓
+          </a>
+        </div>
       </div>
+
+      {/* Above-the-Fold Direct Statutory Answer + Benchmark Table */}
+      <div className="bg-white border-l-4 border-[#059669] border-y border-r border-slate-200 rounded-r-2xl p-6 space-y-4 shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#059669] font-bold">
+            DIRECT STATUTORY ANSWER · {s.code} 2026
+          </span>
+          <span className="text-xs font-mono text-slate-500">{s.statuteCitation}</span>
+        </div>
+        <p className="text-sm text-slate-800 leading-relaxed font-medium">
+          In <strong>{s.name}</strong>, landlords must return security deposits or provide an itemized deduction list within{' '}
+          <strong>{s.itemizedReturnDays} days</strong> ({s.undisputedReturnDays} days if undisputed). Wrongful withholding triggers up to{' '}
+          <strong>{s.penaltyMultiplier}x{s.fixedPenaltyUsd ? ` + $${s.fixedPenaltyUsd}` : ''}</strong> in statutory damages, recoverable in Small Claims Court up to{' '}
+          <strong>${s.smallClaimsLimitUsd.toLocaleString()}</strong>.
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs border border-slate-200 rounded-xl overflow-hidden">
+            <thead className="bg-[#0f2747] text-white font-mono uppercase">
+              <tr>
+                <th className="px-4 py-2.5">Statutory Benchmark</th>
+                <th className="px-4 py-2.5">{s.name} ({s.code}) Rule</th>
+                <th className="px-4 py-2.5">Authority / Limit</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              <tr>
+                <td className="px-4 py-2.5 font-bold text-[#0f2747]">Deposit Return Window</td>
+                <td className="px-4 py-2.5 font-semibold text-slate-800">{s.itemizedReturnDays} Days ({s.undisputedReturnDays}d undisputed)</td>
+                <td className="px-4 py-2.5 font-mono text-slate-500">{s.statuteCitation}</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2.5 font-bold text-[#0f2747]">Bad-Faith Statutory Penalty</td>
+                <td className="px-4 py-2.5 font-semibold text-[#059669]">{s.penaltyMultiplier}x{s.fixedPenaltyUsd ? ` + $${s.fixedPenaltyUsd}` : ''}</td>
+                <td className="px-4 py-2.5 font-mono text-slate-500">{s.attorneyFeesAllowed ? 'Attorney Fees Recoverable' : 'Statutory Damages'}</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2.5 font-bold text-[#0f2747]">Small Claims Venue Limit</td>
+                <td className="px-4 py-2.5 font-semibold text-slate-800">${s.smallClaimsLimitUsd.toLocaleString()}</td>
+                <td className="px-4 py-2.5 font-mono text-slate-500">Est. Filing Fee: ${s.smallClaimsFilingFeeEstUsd}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 35-40% Scroll Depth Offer Placement */}
+      <ToolPaywallDossier docType={`${s.code} Statutory Defense Packet`} />
 
       {/* Key Metrics */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -84,7 +148,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
       </div>
 
       {/* Statute Breakdown */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div id="statutes" className="grid grid-cols-1 lg:grid-cols-12 gap-6 scroll-mt-20">
         <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700">
           <h2 className="text-lg font-extrabold text-[#0f2747]">Statutory Rules &amp; Triggers</h2>
           <div className="space-y-3">
@@ -102,7 +166,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+          <div id="calculator" className="pt-4 border-t border-slate-100 flex flex-wrap gap-3 scroll-mt-20">
             <Link
               href="/calculators/security-deposit-penalty/"
               className="px-4 py-2.5 rounded-xl bg-[#0f2747] text-white text-xs font-bold hover:bg-[#1a3b68]"
@@ -118,7 +182,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         </div>
 
-        <div className="lg:col-span-4 bg-[#0f2747] text-white rounded-2xl p-6 space-y-4">
+        <div id="checklist" className="lg:col-span-4 bg-[#0f2747] text-white rounded-2xl p-6 space-y-4 scroll-mt-20">
           <h3 className="text-sm font-bold uppercase tracking-wider text-[#c8a24a]">Official .GOV Resources</h3>
           <ul className="space-y-3 text-xs">
             <li>
@@ -147,8 +211,6 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         </div>
       </div>
-
-      <ToolPaywallDossier docType={`${s.code} Statutory Defense Packet`} />
     </div>
   );
 }

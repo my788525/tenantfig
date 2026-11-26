@@ -20,12 +20,27 @@ export default function StatutoryBriefBox({
   noticeText
 }: StatutoryBriefBoxProps) {
   const [copied, setCopied] = useState(false);
+  const [copiedSummary, setCopiedSummary] = useState(false);
+
+  const threeLineSummary = [
+    `${jurisdiction} (${citation}) — ${title}`,
+    metrics.map((m) => `${m.label}: ${m.value}`).join(' | '),
+    `Verdict: ${verdict}`
+  ].join('\n');
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(noticeText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
+    } catch {}
+  };
+
+  const handleCopySummary = async () => {
+    try {
+      await navigator.clipboard.writeText(threeLineSummary);
+      setCopiedSummary(true);
+      setTimeout(() => setCopiedSummary(false), 2500);
     } catch {}
   };
 
@@ -41,13 +56,22 @@ export default function StatutoryBriefBox({
             <h3 className="text-lg font-extrabold text-[#0f2747] mt-0.5">{title}</h3>
             <p className="text-xs font-mono text-slate-500 mt-0.5">Authority: {citation}</p>
           </div>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="no-print px-3.5 py-2 rounded-lg bg-[#0f2747] hover:bg-[#1a3b68] text-white text-xs font-bold transition cursor-pointer"
-          >
-            Print / Save Brief (PDF)
-          </button>
+          <div className="no-print flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={handleCopySummary}
+              className="px-3.5 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-[#059669] border border-emerald-200 text-xs font-bold transition cursor-pointer"
+            >
+              {copiedSummary ? '✓ Copied 3-Line Summary' : 'Copy Free 3-Line Summary'}
+            </button>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="px-3.5 py-2 rounded-lg bg-[#0f2747] hover:bg-[#1a3b68] text-white text-xs font-bold transition cursor-pointer"
+            >
+              Print / Save Brief (PDF)
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

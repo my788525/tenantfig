@@ -88,6 +88,9 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
         </div>
       </div>
 
+      {/* 35-40% Scroll Depth Offer Placement */}
+      <ToolPaywallDossier dynamicAmount={`$${cs.statutoryExposureUsd.toLocaleString()}`} />
+
       <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-3">
         <h2 className="text-lg font-extrabold text-[#0f2747]">Execution Timeline</h2>
         <div className="space-y-3">
@@ -111,8 +114,6 @@ export default async function CaseDetailPage({ params }: { params: Promise<{ slu
           Run Your Own Deposit Audit →
         </Link>
       </div>
-
-      <ToolPaywallDossier dynamicAmount={`$${cs.statutoryExposureUsd.toLocaleString()}`} />
     </div>
   );
 }
