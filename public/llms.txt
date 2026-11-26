@@ -1,0 +1,17 @@
+# TenantFig (tenantfig.com)
+
+> Institutional-grade U.S. Tenant Statutory Defense & Security Deposit Recovery Platform. Verified 2026 statutory deadlines, penalty multipliers, HUD/industry wear-and-tear depreciation schedules, rent cap ordinances, and small claims ROI models across all 50 states + DC and top 25 metro cities.
+
+## Core Interactive Calculators
+- [Security Deposit Penalty Calculator](https://tenantfig.com/calculators/security-deposit-penalty/): Audit landlord return deadlines, forwarding-address clock triggers, and 2x/3x statutory bad-faith damages.
+- [Wear & Tear Depreciation Auditor](https://tenantfig.com/calculators/wear-and-tear-deduction/): Prorate carpet (5-7 yr) and paint (2-3 yr) useful-life deductions under HUD/industry standards.
+- [Rent Increase Cap Auditor](https://tenantfig.com/calculators/rent-increase-cap/): Verify CA AB 1482, NYC Good Cause Eviction, local RSO caps, and mandatory notice periods.
+- [Lease Break Mitigation Calculator](https://tenantfig.com/calculators/lease-break-mitigation/): Model landlord duty-to-mitigate vacancy proration and settlement caps.
+- [Small Claims Recovery ROI Calculator](https://tenantfig.com/calculators/small-claims-roi/): Compute principal + statutory multiplier + filing fee - time cost net recovery ROI.
+
+## Statutory Databases & Authority
+- [51-Jurisdiction State Statutes Directory](https://tenantfig.com/states/)
+- [Top 25 Metro City Rent Caps](https://tenantfig.com/cities/)
+- [Real-Ledger Case Studies](https://tenantfig.com/cases/)
+- [Statutory Defense Guides](https://tenantfig.com/guides/)
+- [Full Page Index](https://tenantfig.com/llms-full.txt)

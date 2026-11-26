@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0f2747;
+  --color-navy-dark: #09192e;
+  --color-navy-light: #1a3b68;
+  --color-gold: #c8a24a;
+  --color-gold-light: #e2be68;
+  --color-emerald-legal: #059669;
+  --color-background: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-border: #dbe3ed;
+  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: #0f172a;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.container-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding: 0 2rem;
+  }
+}
+
+/* Executive Legal-Brief Print Styles */
+@media print {
+  @page {
+    margin: 0.6in;
+    size: letter portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  nav,
+  footer,
+  .no-print,
+  [data-matrix-offer="1"] {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-brief {
+    border: 1.5px solid #0f2747 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    break-inside: avoid;
+    padding: 1.25rem !important;
+  }
+}
