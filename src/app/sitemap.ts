@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/calculators/rent-increase-cap/',
     '/calculators/lease-break-mitigation/',
     '/calculators/small-claims-roi/',
+    '/calculators/lease-clause-scanner/',
+    '/calculators/deduction-invoice-auditor/',
     '/states/',
     '/cities/',
     '/cases/',

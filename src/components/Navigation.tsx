@@ -7,10 +7,11 @@ const NAV_LINKS = [
   { href: '/wizard/', label: 'Action Wizard' },
   { href: '/calculators/security-deposit-penalty/', label: 'Deposit Penalty' },
   { href: '/calculators/wear-and-tear-deduction/', label: 'Wear & Tear' },
+  { href: '/calculators/lease-clause-scanner/', label: 'Clause Scanner' },
+  { href: '/calculators/deduction-invoice-auditor/', label: 'Deduction Auditor' },
   { href: '/calculators/rent-increase-cap/', label: 'Rent Caps' },
   { href: '/states/', label: '51 States' },
   { href: '/cities/', label: '25 Cities' },
-  { href: '/cases/', label: 'Cases' },
   { href: '/guides/', label: 'Guides' }
 ];
 
@@ -18,6 +19,8 @@ const MOBILE_CALCULATORS = [
   { href: '/wizard/', label: '4-Step Action Wizard' },
   { href: '/calculators/security-deposit-penalty/', label: 'Security Deposit Penalty' },
   { href: '/calculators/wear-and-tear-deduction/', label: 'Wear & Tear Deduction' },
+  { href: '/calculators/lease-clause-scanner/', label: 'Lease Clause Scanner' },
+  { href: '/calculators/deduction-invoice-auditor/', label: 'Deduction & Receipt Auditor' },
   { href: '/calculators/rent-increase-cap/', label: 'Rent Increase Cap' },
   { href: '/calculators/lease-break-mitigation/', label: 'Lease Break Mitigation' },
   { href: '/calculators/small-claims-roi/', label: 'Small Claims ROI' }

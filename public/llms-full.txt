@@ -4,7 +4,7 @@
 
 This is the machine-readable companion to https://tenantfig.com/llms.txt. It lists every
 indexable page on tenantfig.com with its canonical URL.
-## Complete page index (103 pages)
+## Complete page index (105 pages)
 
 ### Home
 - [TenantFig — U.S. Tenant Statutory Defense & Deposit Recovery Platform](https://tenantfig.com)
@@ -13,7 +13,9 @@ indexable page on tenantfig.com with its canonical URL.
 - [About TenantFig | TenantFig](https://tenantfig.com/about/)
 
 ### /calculators
+- [Itemized Move-Out Deduction & Receipt Auditor (2026 State Thresholds) | TenantFig](https://tenantfig.com/calculators/deduction-invoice-auditor/)
 - [Lease Break Mitigation & Settlement Calculator (50 States, 2026) | TenantFig](https://tenantfig.com/calculators/lease-break-mitigation/)
+- [Lease Red-Flag & Illegal Clause Scanner (51-State 2026 Audit) | TenantFig](https://tenantfig.com/calculators/lease-clause-scanner/)
 - [Rent Increase Cap Auditor (CA AB 1482, NYC Good Cause, 25 Cities) | TenantFig](https://tenantfig.com/calculators/rent-increase-cap/)
 - [Security Deposit Penalty Calculator (50 States + DC, 2026) | TenantFig](https://tenantfig.com/calculators/security-deposit-penalty/)
 - [Small Claims Court Recovery ROI Calculator (50 States, 2026) | TenantFig](https://tenantfig.com/calculators/small-claims-roi/)

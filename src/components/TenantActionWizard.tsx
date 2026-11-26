@@ -5,6 +5,7 @@ import { TENANT_STATUTES_2026, type StateStatute } from '@/data/tenant_statutes_
 import { CITY_RENT_CAPS_2026, type CityRentCap } from '@/data/city_rent_caps_2026';
 import StatutoryBriefBox from '@/components/StatutoryBriefBox';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import IcsDeadlineButton from '@/components/IcsDeadlineButton';
 
 type DisputeScenario = 'deposit' | 'rent_hike' | 'lease_break' | 'small_claims';
 
@@ -667,6 +668,28 @@ Failure to cure within 7 business days will result in formal escalation to Small
             verdict={audit.verdict}
             noticeText={audit.noticeText}
           />
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm no-print">
+            <div>
+              <div className="text-[11px] font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+                STATUTORY CALENDAR REMINDER (.ICS)
+              </div>
+              <p className="text-xs text-slate-600 mt-0.5">
+                Lock in your {selectedState.code} statutory deadline ({selectedState.itemizedReturnDays}-day window under {selectedState.statuteCitation}) with a 1-day advance calendar alert.
+              </p>
+            </div>
+            <IcsDeadlineButton
+              title={`${selectedState.code} Tenant Statutory Deadline — ${audit.matchedTier.shortName}`}
+              description={`Jurisdiction: ${audit.jurisdictionLabel}\nAuthority: ${audit.citation}\nEst. Recovery: $${audit.estimatedRecovery.toLocaleString()}\nAction: ${audit.verdict}`}
+              daysFromNow={
+                scenario === 'deposit'
+                  ? Math.max(1, selectedState.itemizedReturnDays - daysSinceMoveOut)
+                  : 14
+              }
+              url="https://tenantfig.com/wizard/"
+              label="Add Statutory Deadline (.ics)"
+            />
+          </div>
 
           {/* Matched Dodo Product via ToolPaywallDossier */}
           <ToolPaywallDossier

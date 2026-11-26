@@ -41,6 +41,20 @@ const CALCULATORS = [
     title: 'Small Claims Recovery ROI',
     desc: 'Model net expected recovery: principal + statutory multiplier minus filing fees and executive time opportunity cost.',
     metric: 'Up to $25k Venue Limit'
+  },
+  {
+    href: '/calculators/lease-clause-scanner/',
+    badge: '06 · ANTI-WAIVER ENGINE',
+    title: 'Lease Red-Flag & Illegal Clause Scanner',
+    desc: 'Scan lease text for void non-refundable deposit clauses, wear-and-tear waivers, warrantless entry, and rent-cap traps across 51 states.',
+    metric: '0–100% Enforceability'
+  },
+  {
+    href: '/calculators/deduction-invoice-auditor/',
+    badge: '07 · RECEIPT & BENCHMARK AUDIT',
+    title: 'Itemized Move-Out Deduction & Receipt Auditor',
+    desc: 'Audit cleaning, paint, carpet, and blinds charges against state receipt thresholds (e.g. CA $125 rule) and metro market benchmarks.',
+    metric: 'Line-by-Line Audit'
   }
 ];
 
@@ -151,7 +165,7 @@ export default function HomePage() {
               PRECISION WORKBENCH
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f2747]">
-              5 Executive Statutory Calculators
+              7 Executive Statutory Calculators
             </h2>
           </div>
           <div className="flex items-center gap-3">
