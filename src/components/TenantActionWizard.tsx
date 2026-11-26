@@ -694,6 +694,34 @@ Failure to cure within 7 business days will result in formal escalation to Small
 
           <HiddenTrapsCallout variant="wizard" />
 
+          {/* Dynamic ROI Value Anchor Banner */}
+          {(() => {
+            const roiMultiplier = Math.max(1, Math.round(audit.estimatedRecovery / 29.99));
+            return (
+              <div className="bg-gradient-to-r from-[#09192e] via-[#0f2747] to-[#09192e] border-2 border-[#c8a24a] rounded-2xl p-5 sm:p-6 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+                <div className="space-y-1">
+                  <div className="text-[11px] font-mono uppercase tracking-widest text-[#e2be68] font-bold">
+                    DYNAMIC STATUTORY ROI VALUE ANCHOR
+                  </div>
+                  <div className="text-base sm:text-lg font-extrabold text-white">
+                    ${audit.estimatedRecovery.toLocaleString()} Estimated Recovery vs. $29.99 Statutory Demand Kit
+                  </div>
+                  <p className="text-xs text-slate-300">
+                    Lock in court-ready .DOCX Certified Mail Demand Letters, .XLSX Depreciation Ledgers, and {selectedState.code} statutory citations ({selectedState.statuteCitation}).
+                  </p>
+                </div>
+                <div className="bg-[#c8a24a] text-[#09192e] rounded-xl px-5 py-3 text-center shrink-0 shadow">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider">
+                    PROJECTED ROI
+                  </div>
+                  <div className="text-2xl font-black tabular-nums leading-tight">
+                    {roiMultiplier}x
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Matched Dodo Product via ToolPaywallDossier */}
           <ToolPaywallDossier
             badge={`RECOMMENDED FOR YOUR CASE · ${audit.matchedTier.badge}`}
