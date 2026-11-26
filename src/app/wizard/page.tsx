@@ -79,6 +79,9 @@ export default function WizardPage() {
         <p className="text-slate-600 max-w-3xl text-sm sm:text-base">
           Diagnose your deposit, rent-hike, lease-break, or small-claims dispute in 60 seconds and print a free personalized 《Statutory Action Brief》.
         </p>
+        <p className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 max-w-3xl">
+          <strong className="text-[#0f2747]">Ballpark vs. Exact Audit:</strong> General state averages only provide a rough estimate—exact statutory deadlines, forwarding-address triggers, 2x/3x multipliers, and 25-city rent caps must be calculated interactively on-site below.
+        </p>
       </div>
 
       <TenantActionWizard />
