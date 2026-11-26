@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 export const MATRIX_ALL_ACCESS_PID = 'pdt_0NryTUNyfdta6f959Z51a';
-export const TENANTFIG_PACK_PID = process.env.NEXT_PUBLIC_TENANTFIG_PACK_PID || 'pdt_0NryTUNyfdta6f959Z51a';
+export const TENANTFIG_PACK_PID = process.env.NEXT_PUBLIC_TENANTFIG_PACK_PID || 'pdt_0Nsmkl1NJxiaPAsPE2UhB';
 
 interface ToolPaywallDossierProps {
   badge?: string;
@@ -23,7 +23,7 @@ export default function ToolPaywallDossier({
   badge = 'VIP STATUTORY DEFENSE KIT',
   title = 'Export Certified Statutory Demand & Small Claims Dossier',
   desc = 'Unlock the editable .docx Demand Letter Suite, 5-Tab Small Claims & Depreciation Excel Workstation, and offline 51-state statutory reference.',
-  price = '$19',
+  price = '$24.99',
   pid = TENANTFIG_PACK_PID,
   site = 'tenantfig.com',
   features = [
