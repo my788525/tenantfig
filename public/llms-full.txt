@@ -4,7 +4,7 @@
 
 This is the machine-readable companion to https://tenantfig.com/llms.txt. It lists every
 indexable page on tenantfig.com with its canonical URL.
-## Complete page index (108 pages)
+## Complete page index (121 pages)
 
 ### Home
 - [TenantFig — 2026 U.S. Tenant & Deposit Defense](https://tenantfig.com)
@@ -36,26 +36,39 @@ indexable page on tenantfig.com with its canonical URL.
 - [Austin, TX Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/austin/)
 - [Berkeley, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/berkeley/)
 - [Boston, MA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/boston/)
+- [Charlotte, NC Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/charlotte/)
 - [Chicago, IL Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/chicago/)
+- [Columbus, OH Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/columbus/)
 - [Dallas, TX Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/dallas/)
 - [Denver, CO Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/denver/)
 - [Hoboken, NJ Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/hoboken/)
+- [Houston, TX Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/houston/)
+- [Indianapolis, IN Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/indianapolis/)
 - [Jersey City, NJ Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/jersey-city/)
+- [Kansas City, MO Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/kansas-city/)
+- [Las Vegas, NV Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/las-vegas/)
 - [Los Angeles, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/los-angeles/)
 - [Miami, FL Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/miami/)
 - [Minneapolis, MN Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/minneapolis/)
+- [Nashville, TN Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/nashville/)
 - [New York City, NY Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/new-york-city/)
 - [Newark, NJ Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/newark/)
 - [Oakland, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/oakland/)
+- [Orlando, FL Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/orlando/)
 - [Philadelphia, PA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/philadelphia/)
 - [Phoenix, AZ Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/phoenix/)
 - [Portland, OR Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/portland/)
+- [Raleigh, NC Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/raleigh/)
+- [Sacramento, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/sacramento/)
 - [Saint Paul, MN Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/saint-paul/)
+- [Salt Lake City, UT Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/salt-lake-city/)
+- [San Antonio, TX Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/san-antonio/)
 - [San Diego, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/san-diego/)
 - [San Francisco, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/san-francisco/)
 - [San Jose, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/san-jose/)
 - [Santa Monica, CA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/santa-monica/)
 - [Seattle, WA Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/seattle/)
+- [Tampa, FL Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/tampa/)
 - [Washington, DC, DC Rent Cap & Notice Laws (2026) | TenantFig](https://tenantfig.com/cities/washington-dc/)
 
 ### /contact
