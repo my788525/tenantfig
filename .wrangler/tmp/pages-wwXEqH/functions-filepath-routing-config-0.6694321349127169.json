@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/geo",
+      "mountPath": "/api",
+      "method": "GET",
+      "module": [
+        "api/geo.ts:onRequestGet"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
