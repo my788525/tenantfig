@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import TenantActionWizard from '@/components/TenantActionWizard';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -83,6 +84,8 @@ export default function WizardPage() {
           <strong className="text-[#0f2747]">Ballpark vs. Exact Audit:</strong> General state averages only provide a rough estimate—exact statutory deadlines, forwarding-address triggers, 2x/3x multipliers, and 25-city rent caps must be calculated interactively on-site below.
         </p>
       </div>
+
+      <StatutoryAuditStamp />
 
       <TenantActionWizard />
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import WearAndTearCalc from '@/components/calculators/WearAndTearCalc';
 import CalculatorAuthoritySection from '@/components/CalculatorAuthoritySection';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -82,6 +83,7 @@ export default function WearAndTearPage() {
           Audit inflated carpet, paint, and appliance replacement deductions using HUD/IRS useful-life depreciation schedules and generate a line-item rebuttal notice.
         </p>
       </div>
+      <StatutoryAuditStamp />
       <WearAndTearCalc />
 
       <CalculatorAuthoritySection

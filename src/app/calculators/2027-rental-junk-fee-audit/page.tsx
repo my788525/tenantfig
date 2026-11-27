@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import JunkFeeAuditCalc from '@/components/calculators/JunkFeeAuditCalc';
 import ToolPaywallDossier from '@/components/ToolPaywallDossier';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -57,6 +58,8 @@ export default function JunkFee2027Page() {
           Check whether mandatory pet, trash, portal, or move-in fees were omitted from Page 1 of your lease under Illinois HB 3564 (effective Jan 1, 2027) and state junk-fee laws.
         </p>
       </div>
+
+      <StatutoryAuditStamp />
 
       <JunkFeeAuditCalc />
 

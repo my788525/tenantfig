@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SmallClaimsRoiCalc from '@/components/calculators/SmallClaimsRoiCalc';
 import CalculatorAuthoritySection from '@/components/CalculatorAuthoritySection';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -82,6 +83,7 @@ export default function SmallClaimsRoiPage() {
           Quantify net expected recovery after Small Claims filing fees and your hourly time cost across all 51 US court limits.
         </p>
       </div>
+      <StatutoryAuditStamp />
       <SmallClaimsRoiCalc />
 
       <CalculatorAuthoritySection

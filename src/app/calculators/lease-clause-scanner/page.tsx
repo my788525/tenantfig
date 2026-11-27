@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import LeaseClauseScanner from '@/components/calculators/LeaseClauseScanner';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -59,6 +60,8 @@ export default function LeaseClauseScannerPage() {
           Paste any residential lease clause or test 5 common landlord traps to check enforceability (0–100%), cite exact 2026 state anti-waiver statutes, and generate a free rebuttal paragraph.
         </p>
       </div>
+
+      <StatutoryAuditStamp />
 
       <LeaseClauseScanner />
 

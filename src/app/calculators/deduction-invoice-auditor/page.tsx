@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import DeductionInvoiceAuditor from '@/components/calculators/DeductionInvoiceAuditor';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd, webApplicationJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -62,6 +63,8 @@ export default function DeductionInvoiceAuditorPage() {
           Audit move-out cleaning, repainting, carpet, and blinds charges against state vendor-receipt thresholds (such as California&apos;s $125 rule under Cal. Civ. Code § 1950.5(g)) and metro market-rate benchmarks.
         </p>
       </div>
+
+      <StatutoryAuditStamp />
 
       <DeductionInvoiceAuditor />
 

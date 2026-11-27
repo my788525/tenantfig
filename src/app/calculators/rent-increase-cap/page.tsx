@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import RentIncreaseCapCalc from '@/components/calculators/RentIncreaseCapCalc';
 import CalculatorAuthoritySection from '@/components/CalculatorAuthoritySection';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -82,7 +83,46 @@ export default function RentIncreaseCapPage() {
           Test renewal rent hikes against CA AB 1482, NYC Good Cause Eviction, local RSO limits, and mandatory 30/60/90/180-day notice rules.
         </p>
       </div>
+      <StatutoryAuditStamp />
       <RentIncreaseCapCalc />
+
+      {/* Worked Verification Math Example */}
+      <section className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 no-print">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+            WORKED VERIFICATION MATH EXAMPLE
+          </div>
+          <span className="text-[11px] font-mono text-slate-500">
+            Rent Cap Excess + Prorated Wear-and-Tear &amp; 2x–3x Penalty Verification
+          </span>
+        </div>
+        <h2 className="text-lg font-extrabold text-[#0f2747]">
+          $2,800 Rent Hit With 14% Hike + Move-Out Deposit Offset Verification
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">1. AB 1482 Rent Cap Ceiling</div>
+            <div className="font-mono font-bold text-emerald-700">$2,800 × 1.088 = $3,046.40/mo</div>
+            <p className="text-slate-600">
+              A 14% demand ($3,192/mo) exceeds the 8.8% cap (5% + 3.8% CPI) by $145.60/mo ($1,747.20/yr illegal overcharge).
+            </p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">2. Prorated Wear-and-Tear Check</div>
+            <div className="font-mono font-bold text-emerald-700">$600 Paint × (1 − 3/3) = $0</div>
+            <p className="text-slate-600">
+              If a landlord offsets a disputed hike against a $2,800 deposit for 3-year-old paint (HUD 2–3 yr life), lawful deduction is $0.
+            </p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">3. 2x–3x Statutory Penalty Math</div>
+            <div className="font-mono font-bold text-emerald-700">$2,800 × 3 = $8,400 Exposure</div>
+            <p className="text-slate-600">
+              Bad-faith withholding of $2,800 triggers 2x statutory penalty + principal (3x = $8,400) under Cal. Civ. Code §1950.5(l).
+            </p>
+          </div>
+        </div>
+      </section>
 
       <CalculatorAuthoritySection
         badge="2026 STATE & METRO RENT CAP LAW"

@@ -15,8 +15,12 @@ export default function Footer() {
           <p className="text-slate-400 leading-relaxed">
             Executive U.S. tenant statutory defense &amp; deposit recovery workbench. Verified 2026 statutory clocks, 2x/3x multipliers, HUD depreciation schedules, and municipal rent caps.
           </p>
-          <p className="text-[11px] text-slate-500">
-            Educational &amp; quantitative modeling only. Not a law firm or legal advice.
+          <p className="text-[11px] text-slate-400 leading-relaxed">
+            <strong className="text-slate-300">Non-Attorney / Educational Disclaimer:</strong> Educational &amp; quantitative statutory modeling only. TenantFig is not a law firm and does not provide legal advice or representation.{' '}
+            <Link href="/disclaimer/" className="underline hover:text-white">
+              Read full disclaimer
+            </Link>
+            .
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import DepositPenaltyCalc from '@/components/calculators/DepositPenaltyCalc';
 import CalculatorAuthoritySection from '@/components/CalculatorAuthoritySection';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -77,7 +78,46 @@ export default function SecurityDepositPenaltyPage() {
           Verify whether your landlord missed the statutory return clock, check forwarding-address triggers, and compute exact 2x/3x bad-faith damages plus fixed penalties.
         </p>
       </div>
+      <StatutoryAuditStamp />
       <DepositPenaltyCalc />
+
+      {/* Worked Verification Math Example */}
+      <section className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 no-print">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#c8a24a] font-bold">
+            WORKED VERIFICATION MATH EXAMPLE
+          </div>
+          <span className="text-[11px] font-mono text-slate-500">
+            Prorated Wear-and-Tear + 2x–3x Statutory Penalty
+          </span>
+        </div>
+        <h2 className="text-lg font-extrabold text-[#0f2747]">
+          $2,400 Deposit + $900 Carpet Claim (4-Yr-Old Carpet) → $6,660 Statutory Exposure
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">1. Prorated Wear-and-Tear</div>
+            <div className="font-mono font-bold text-emerald-700">$900 × (1 − 4/5) = $180</div>
+            <p className="text-slate-600">
+              Under HUD 5-year carpet useful life, 80% is normal wear ($720 disallowed); max lawful deduction is $180.
+            </p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">2. Wrongfully Withheld Principal</div>
+            <div className="font-mono font-bold text-emerald-700">$2,400 − $180 = $2,220</div>
+            <p className="text-slate-600">
+              If the landlord missed the 14–30 day return clock, full forfeiture applies ($2,400 principal owed).
+            </p>
+          </div>
+          <div className="bg-white border border-slate-200 rounded-xl p-3.5 space-y-1">
+            <div className="font-bold text-[#0f2747]">3. 2x–3x Statutory Penalty Math</div>
+            <div className="font-mono font-bold text-emerald-700">$2,220 + (2 × $2,220) = $6,660</div>
+            <p className="text-slate-600">
+              CA Civ. Code §1950.5(l) awards up to 2x bad-faith penalty + principal (3x total); MA/TX award 3x damages ($6,660–$7,200).
+            </p>
+          </div>
+        </div>
+      </section>
 
       <CalculatorAuthoritySection
         badge="51-STATE DEPOSIT PENALTY LAW"

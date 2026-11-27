@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import LeaseBreakCalc from '@/components/calculators/LeaseBreakCalc';
 import CalculatorAuthoritySection from '@/components/CalculatorAuthoritySection';
+import StatutoryAuditStamp from '@/components/StatutoryAuditStamp';
 import {
   JsonLd,
   breadcrumbJsonLd,
@@ -82,6 +83,7 @@ export default function LeaseBreakMitigationPage() {
           Compare your lease buyout fee against prorated vacancy liability under your state’s statutory or common-law landlord duty to mitigate damages.
         </p>
       </div>
+      <StatutoryAuditStamp />
       <LeaseBreakCalc />
 
       <CalculatorAuthoritySection

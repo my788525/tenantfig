@@ -393,6 +393,38 @@ export default function ToolkitsStorePage() {
           </div>
         </div>
       </section>
+
+      {/* Non-Attorney / Educational Disclaimer & Governance Links */}
+      <section className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 text-xs text-slate-600">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <strong className="text-sm text-[#0f2747]">
+            Non-Attorney &amp; Educational Disclaimer
+          </strong>
+          <span className="text-[11px] font-mono text-slate-500">
+            Audited Nov 2026 · TenantFig Housing &amp; Statutory Research Board
+          </span>
+        </div>
+        <p className="leading-relaxed">
+          TenantFig is an educational and quantitative statutory modeling platform, not a law firm, and does not provide legal advice, legal representation, or an attorney-client relationship. All downloadable <code className="text-[#0f2747]">.DOCX</code> demand templates and <code className="text-[#0f2747]">.XLSX</code> audit workbooks are self-help educational resources. Consult a licensed housing attorney in your jurisdiction for case-specific legal counsel.
+        </p>
+        <div className="flex flex-wrap items-center gap-4 pt-1 font-semibold text-[#0f2747]">
+          <Link href="/methodology/" className="underline hover:text-[#059669]">
+            Audit Methodology
+          </Link>
+          <Link href="/editorial-policy/" className="underline hover:text-[#059669]">
+            Editorial Policy
+          </Link>
+          <Link href="/changelog/" className="underline hover:text-[#059669]">
+            2026 Statutory Changelog
+          </Link>
+          <Link href="/about/" className="underline hover:text-[#059669]">
+            About TenantFig
+          </Link>
+          <Link href="/disclaimer/" className="underline hover:text-[#059669]">
+            Full Legal Disclaimer
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

@@ -68,6 +68,7 @@ export function webApplicationJsonLd(opts: {
   name: string;
   description: string;
   url: string;
+  citation?: string[];
 }) {
   return {
     '@context': 'https://schema.org',
@@ -77,6 +78,15 @@ export function webApplicationJsonLd(opts: {
     url: opts.url,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Any',
+    citation: opts.citation ?? [
+      'https://leginfo.legislature.ca.gov/',
+      'https://www.hud.gov/'
+    ],
+    reviewedBy: {
+      '@type': 'Organization',
+      name: 'TenantFig Housing & Statutory Research Board',
+      url: 'https://tenantfig.com/methodology/'
+    },
     offers: {
       '@type': 'Offer',
       price: '0',
