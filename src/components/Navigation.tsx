@@ -99,6 +99,7 @@ const MOBILE_DIRECTORY = [
   { href: '/cases/', label: 'Cases' },
   { href: '/pitfalls/', label: 'Pitfalls & Traps' },
   { href: '/guides/', label: 'Guides' },
+  { href: '/toolkits/', label: 'VIP Toolkits' },
   { href: '/statutes/', label: 'Statute Index' },
   { href: '/methodology/', label: 'Methodology' },
   { href: '/editorial-policy/', label: 'Editorial Policy' }
@@ -314,6 +315,14 @@ export default function Navigation() {
               </div>
             )}
           </div>
+
+          <Link
+            href="/toolkits/"
+            onClick={() => setActiveDropdown(null)}
+            className="text-sm font-semibold text-[#e2be68] hover:text-white transition whitespace-nowrap"
+          >
+            Toolkits
+          </Link>
 
           <Link
             href="/wizard/"

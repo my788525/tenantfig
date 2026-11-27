@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
     '/wizard/',
+    '/toolkits/',
     '/calculators/security-deposit-penalty/',
     '/calculators/wear-and-tear-deduction/',
     '/calculators/rent-increase-cap/',
