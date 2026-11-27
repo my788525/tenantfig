@@ -2,6 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/components/JsonLd';
+import { TENANT_STATUTES_2026 } from '@/data/tenant_statutes_2026';
+import ToolkitsHeroClient from './ToolkitsHeroClient';
 
 const CHECKOUT_URL =
   'https://checkout.dodopayments.com/buy/pdt_0Nsmkl1NJxiaPAsPE2UhB?src=toolkits_hub';
