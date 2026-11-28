@@ -15,6 +15,7 @@ export default function DepositPenaltyCalc() {
   const [itemizedReceived, setItemizedReceived] = useState<'none' | 'late' | 'timely'>('late');
   const [wearAndTearDeduction, setWearAndTearDeduction] = useState(850);
   const [badFaith, setBadFaith] = useState(true);
+  const [showSampleModal, setShowSampleModal] = useState(false);
 
   const statute = useMemo(
     () => TENANT_STATUTES_2026.find((s) => s.code === stateCode) || TENANT_STATUTES_2026[4],
@@ -108,6 +109,16 @@ Sincerely,
 
   return (
     <div className="space-y-8">
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-emerald-200 bg-emerald-50/80 px-4 py-2.5 text-xs text-emerald-900">
+        <span className="inline-flex items-center gap-2 font-bold">
+          <svg className="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
+            <rect x="3" y="11" width="18" height="11" rx="2" />
+            <path d="M7 11V7a5 5 0 0110 0v4" />
+          </svg>
+          100% Client-Side Math — Your deposit &amp; address details never leave your browser (No Sign-Up)
+        </span>
+        <span className="text-[11px] font-medium text-emerald-700">Zero Landlord Tracking</span>
+      </div>
       {/* Dual-Mode Toggle + Presets */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="inline-flex rounded-xl bg-slate-200/80 p-1 border border-slate-300">
@@ -370,9 +381,75 @@ Sincerely,
                 </>
               )}
             </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowSampleModal(true)}
+                className="inline-flex items-center gap-2 rounded-xl bg-amber-400 hover:bg-amber-300 px-4 py-2 text-xs font-black text-slate-950 transition cursor-pointer"
+              >
+                Preview Sample .DOCX Demand Letter &amp; .XLSX Ledger →
+              </button>
+              <span className="text-[11px] text-slate-300">Certified Mail Ready · HUD Depreciation</span>
+            </div>
           </div>
         </div>
       </div>
+
+      {showSampleModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Redacted Statutory Demand Sample"
+          onClick={() => setShowSampleModal(false)}
+        >
+          <div
+            className="max-w-lg w-full rounded-2xl bg-white border-2 border-[#c8a24a] shadow-2xl p-6 space-y-4 text-left"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3 border-b border-slate-200 pb-3">
+              <div>
+                <div className="text-[11px] font-black uppercase tracking-wider text-amber-700">Redacted 1-Page Sample Preview</div>
+                <h4 className="text-lg font-extrabold text-[#0f2747]">USPS Certified Mail Demand &amp; HUD Ledger (.DOCX / .XLSX)</h4>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSampleModal(false)}
+                className="rounded-lg px-2.5 py-1 text-sm font-bold text-slate-500 hover:bg-slate-100 cursor-pointer"
+                aria-label="Close sample preview"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-xs text-slate-700 space-y-2 leading-relaxed">
+              <div className="font-bold text-slate-900">VIA USPS CERTIFIED MAIL — RETURN RECEIPT REQUESTED</div>
+              <div>RE: Statutory Demand for Return of Security Deposit ({statute.statuteCitation})</div>
+              <div className="border-t border-slate-200 pt-2">
+                • Principal Withheld: {fmt(results.principalClaim)} | Statutory Penalty ({statute.penaltyMultiplier}x): +{fmt(results.statutoryDamages)}<br />
+                • Total Statutory Exposure: <strong>{fmt(results.totalClaim)}</strong><br />
+                • Demand Cure Window: 10 Calendar Days Prior to Small Claims Filing
+              </div>
+              <div className="text-emerald-700 font-bold pt-1">+ Includes .XLSX HUD 5-Yr Carpet &amp; 3-Yr Paint Proration Sheet</div>
+            </div>
+            <div className="flex flex-wrap items-center justify-end gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() => setShowSampleModal(false)}
+                className="rounded-lg border border-slate-300 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer"
+              >
+                Close
+              </button>
+              <a
+                href="/toolkits/?src=calc_sample_modal"
+                className="rounded-lg bg-[#0f2747] hover:bg-slate-800 px-4 py-2 text-xs font-black text-white no-underline"
+              >
+                Inspect Full Defense Suite →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <StatutoryBriefBox
         title={`${statute.name} Security Deposit Statutory Audit`}
